@@ -20,8 +20,8 @@
 
 		</view>
 		<view class="myItems">
-			<!-- 我的 -->
-			<view class="myCollection">
+			<!-- 我的收藏 -->
+			<view class="myCollection" @click="navTo('/pages/tarbar/my/myCollection')">
 				<view class="collection-image">
 					<view class="collection-inner-icon">
 						<img src="../../../static/image/star.png" style="height: 100%;width: 100%;"></img>
@@ -35,27 +35,63 @@
 				</view>
 			</view>
 			<view class="ssmalltemp"></view>
-			<view class="myLike">
-				<view class="like-inner-icon">
-
+			<!-- 我的点赞 -->
+			<view class="myLike" @click="navTo('/pages/tarbar/my/mylike')">
+				<view class="like-image">
+					<view class="like-inner-icon">
+							<img src="../../../static/image/header.png" style="height: 100%;width: 100%;"></img>
+					</view>
+				</view>
+				<view class="like-text">
+					<text style="font-size: 35rpx;">我的点赞</text>
+				</view>
+				<view class="like-nextto">
+					<img src="../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
 				</view>
 			</view>
 			<view class="ssmalltemp"></view>
-			<view class="mycare">
-				<view class="care-inner-icon">
-
+			<!-- 我的关注 -->
+			<view class="mycare" @click="navTo('/pages/tarbar/my/mycare')">
+				<view class="care-image">
+					<view class="care-inner-icon">
+							<img src="../../../static/image/mycare.png" style="height: 100%;width: 100%;"></img>
+					</view>
+				</view>
+				<view class="care-text">
+					<text style="font-size: 35rpx;">我的关注</text>
+				</view>
+				<view class="care-nextto">
+					<img src="../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
 				</view>
 			</view>
 			<view class="ssmalltemp"></view>
-			<view class="myfriends">
-				<view class="friends-inner-icon">
-
+			<!-- 我的好友 -->
+			<view class="myfriends" @click="navTo('/pages/tarbar/my/myfriends/myfriends')">
+				<view class="friends-image">
+					<view class="friends-inner-icon">
+							<img src="../../../static/image/friends.png" style="height: 100%;width: 100%;"></img>
+					</view>
+				</view>
+				<view class="friends-text">
+					<text style="font-size: 35rpx;">我的好友</text>
+				</view>
+				<view class="friends-nextto">
+					<img src="../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
-			<view class="set">
-				<view class="set-inner-icon">
-
+			<!-- 我的设置 -->
+			<view class="set" @click="navTo('/pages/tarbar/my/set/set')">
+				<view class="set-image">
+					<view class="set-inner-icon">
+							<img src="../../../static/image/set.png" style="height: 100%;width: 100%;"></img>
+					</view>
+				</view>
+				<view class="set-text">
+					<text style="font-size: 35rpx;">设置</text>
+				</view>
+				<view class="set-nextto">
+					<img src="../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
 				</view>
 			</view>
 		</view>
@@ -110,7 +146,8 @@
 		height: 100%;
 		margin-left: 40rpx;
 	}
-	.collection-image{
+
+	.collection-image {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -118,6 +155,7 @@
 		height: 100%;
 		margin-left: 20rpx;
 	}
+
 	.inner_image {
 		display: flex;
 		justify-content: center;
@@ -148,32 +186,32 @@
 		display: flex;
 		width: 100%;
 		height: 250rpx;
-		background-color: blue;
+
 	}
 
 	.firsttemp {
 		display: flex;
 		width: 100%;
 		height: 100rpx;
-		background-color: blue;
+
 	}
 
 	.smalltemp {
 		width: 100%;
 		height: 18rpx;
-		background-color: green;
+
 	}
 
 	.ssmalltemp {
 		width: 100%;
 		height: 5rpx;
-		background-color: green;
+
 	}
 
 	.myItems {
 		display: flex;
 		width: 100%;
-		height: 508rpx;
+		height: 538rpx;
 		flex-wrap: wrap;
 		background-color: white;
 
@@ -188,37 +226,79 @@
 		align-items: center;
 		/* 	border-radius: 24rpx; */
 	}
-	.collection-text{
+
+	.collection-text {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 
 	}
-	.collection-nextto{
-		display:flex;
-		width:65rpx;
+
+	.collection-nextto {
+		display: flex;
+		width: 65rpx;
 		height: 65rpx;
 		margin-left: auto;
 	}
+
 	.myLike {
 		display: flex;
 		width: 100%;
 		height: 100rpx;
 		flex-wrap: wrap;
-		gap: 70rpx;
-		background-color: red;
+		justify-content: space-between;
+		align-items: center;
 		/* 	border-radius: 24rpx; */
 	}
-
+	.like-image{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100rpx;
+		height: 100%;
+		margin-left: 20rpx;
+	}
+	.like-text{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	.like-nextto{
+		display: flex;
+		width: 65rpx;
+		height: 65rpx;
+		margin-left: auto;
+	}
 	.mycare {
 		display: flex;
 		width: 100%;
 		height: 100rpx;
 		flex-wrap: wrap;
-		gap: 70rpx;
-		background-color: red;
+		justify-content: space-between;
+		align-items: center;
 		/* 		border-radius: 24rpx; */
+	}
+	.care-image{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100rpx;
+		height: 100%;
+		margin-left: 20rpx;
+	}
+	.care-text{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	.care-nextto{
+		display: flex;
+		width: 65rpx;
+		height: 65rpx;
+		margin-left: auto;
 	}
 
 	.myfriends {
@@ -226,9 +306,29 @@
 		width: 100%;
 		height: 100rpx;
 		flex-wrap: wrap;
-		gap: 70rpx;
-		background-color: red;
+		justify-content: space-between;
+		align-items: center;
 		/* border-radius: 24rpx; */
+	}
+	.friends-image{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100rpx;
+		height: 100%;
+		margin-left: 20rpx;
+	}
+	.friends-text{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	.friends-nextto{
+		display: flex;
+		width: 65rpx;
+		height: 65rpx;
+		margin-left: auto;
 	}
 
 	.set {
@@ -236,9 +336,29 @@
 		width: 100%;
 		height: 100rpx;
 		flex-wrap: wrap;
-		gap: 70rpx;
-		background-color: red;
+		justify-content: space-between;
+		align-items: center;
 		/* border-radius: 24rpx; */
+	}
+	.set-image{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100rpx;
+		height: 100%;
+		margin-left: 20rpx;
+	}
+	.set-text{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+	.set-nextto{
+		display: flex;
+		width: 65rpx;
+		height: 65rpx;
+		margin-left: auto;
 	}
 
 	.collection-inner-icon {
@@ -247,18 +367,23 @@
 	}
 
 	.like-inner-icon {
-		
+		height: 55rpx;
+		width: 55rpx;
+		margin-left: 7rpx;
 	}
 
 	.care-inner-icon {
-		
+		height: 65rpx;
+		width: 65rpx;
 	}
 
 	.friends-inner-icon {
-		
+		height: 65rpx;
+		width: 65rpx;
 	}
 
 	.set-inner-icon {
-		
+		height: 65rpx;
+		width: 65rpx;
 	}
 </style>

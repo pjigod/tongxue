@@ -16,11 +16,10 @@
             "disablePlugins": [],
             "outputPath": ""
         },
-        "condition": false,
-        "ignoreUploadUnusedFiles": false
+        "condition": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.32.2",
+    "libVersion": "2.32.3",
     "appid": "touristappid",
     "projectname": "student",
     "condition": {},

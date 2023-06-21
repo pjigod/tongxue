@@ -23,7 +23,7 @@
 	height: 100%;
 	margin-left: 40rpx;
 }
-.collection-image{
+.collection-image {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -58,28 +58,24 @@
 	display: flex;
 	width: 100%;
 	height: 250rpx;
-	background-color: blue;
 }
 .firsttemp {
 	display: flex;
 	width: 100%;
 	height: 100rpx;
-	background-color: blue;
 }
 .smalltemp {
 	width: 100%;
 	height: 18rpx;
-	background-color: green;
 }
 .ssmalltemp {
 	width: 100%;
 	height: 5rpx;
-	background-color: green;
 }
 .myItems {
 	display: flex;
 	width: 100%;
-	height: 508rpx;
+	height: 538rpx;
 	flex-wrap: wrap;
 	background-color: white;
 }
@@ -92,15 +88,15 @@
 	align-items: center;
 	/* 	border-radius: 24rpx; */
 }
-.collection-text{
+.collection-text {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
 }
-.collection-nextto{
-	display:flex;
-	width:65rpx;
+.collection-nextto {
+	display: flex;
+	width: 65rpx;
 	height: 65rpx;
 	margin-left: auto;
 }
@@ -109,47 +105,136 @@
 	width: 100%;
 	height: 100rpx;
 	flex-wrap: wrap;
-	gap: 70rpx;
-	background-color: red;
+	justify-content: space-between;
+	align-items: center;
 	/* 	border-radius: 24rpx; */
+}
+.like-image{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100rpx;
+	height: 100%;
+	margin-left: 20rpx;
+}
+.like-text{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.like-nextto{
+	display: flex;
+	width: 65rpx;
+	height: 65rpx;
+	margin-left: auto;
 }
 .mycare {
 	display: flex;
 	width: 100%;
 	height: 100rpx;
 	flex-wrap: wrap;
-	gap: 70rpx;
-	background-color: red;
+	justify-content: space-between;
+	align-items: center;
 	/* 		border-radius: 24rpx; */
+}
+.care-image{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100rpx;
+	height: 100%;
+	margin-left: 20rpx;
+}
+.care-text{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.care-nextto{
+	display: flex;
+	width: 65rpx;
+	height: 65rpx;
+	margin-left: auto;
 }
 .myfriends {
 	display: flex;
 	width: 100%;
 	height: 100rpx;
 	flex-wrap: wrap;
-	gap: 70rpx;
-	background-color: red;
+	justify-content: space-between;
+	align-items: center;
 	/* border-radius: 24rpx; */
+}
+.friends-image{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100rpx;
+	height: 100%;
+	margin-left: 20rpx;
+}
+.friends-text{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.friends-nextto{
+	display: flex;
+	width: 65rpx;
+	height: 65rpx;
+	margin-left: auto;
 }
 .set {
 	display: flex;
 	width: 100%;
 	height: 100rpx;
 	flex-wrap: wrap;
-	gap: 70rpx;
-	background-color: red;
+	justify-content: space-between;
+	align-items: center;
 	/* border-radius: 24rpx; */
+}
+.set-image{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100rpx;
+	height: 100%;
+	margin-left: 20rpx;
+}
+.set-text{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.set-nextto{
+	display: flex;
+	width: 65rpx;
+	height: 65rpx;
+	margin-left: auto;
 }
 .collection-inner-icon {
 	height: 65rpx;
 	width: 65rpx;
 }
 .like-inner-icon {
+	height: 55rpx;
+	width: 55rpx;
+	margin-left: 7rpx;
 }
 .care-inner-icon {
+	height: 65rpx;
+	width: 65rpx;
 }
 .friends-inner-icon {
+	height: 65rpx;
+	width: 65rpx;
 }
 .set-inner-icon {
+	height: 65rpx;
+	width: 65rpx;
 }
 
