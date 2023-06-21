@@ -1,0 +1,155 @@
+
+.container {
+	display: flex;
+	width: 730rpx;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.userInfo {
+	display: flex;
+	width: 100%;
+	height: 200rpx;
+	flex-wrap: wrap;
+	gap: 70rpx;
+	border-radius: 24rpx;
+	background-color: white;
+}
+.userImage {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 120rpx;
+	height: 100%;
+	margin-left: 40rpx;
+}
+.collection-image{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100rpx;
+	height: 100%;
+	margin-left: 20rpx;
+}
+.inner_image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10rpx;
+	width: 120rpx;
+	height: 100rpx;
+	border-radius: 180rpx;
+	border: 5rpx solid black;
+}
+.userName {
+	display: flex;
+	width: 200rpx;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.userTitle {
+	display: flex;
+	width: 150rpx;
+	height: 100%;
+	align-items: center;
+}
+.bigTemp {
+	display: flex;
+	width: 100%;
+	height: 250rpx;
+	background-color: blue;
+}
+.firsttemp {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	background-color: blue;
+}
+.smalltemp {
+	width: 100%;
+	height: 18rpx;
+	background-color: green;
+}
+.ssmalltemp {
+	width: 100%;
+	height: 5rpx;
+	background-color: green;
+}
+.myItems {
+	display: flex;
+	width: 100%;
+	height: 508rpx;
+	flex-wrap: wrap;
+	background-color: white;
+}
+.myCollection {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	/* 	border-radius: 24rpx; */
+}
+.collection-text{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.collection-nextto{
+	display:flex;
+	width:65rpx;
+	height: 65rpx;
+	margin-left: auto;
+}
+.myLike {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	flex-wrap: wrap;
+	gap: 70rpx;
+	background-color: red;
+	/* 	border-radius: 24rpx; */
+}
+.mycare {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	flex-wrap: wrap;
+	gap: 70rpx;
+	background-color: red;
+	/* 		border-radius: 24rpx; */
+}
+.myfriends {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	flex-wrap: wrap;
+	gap: 70rpx;
+	background-color: red;
+	/* border-radius: 24rpx; */
+}
+.set {
+	display: flex;
+	width: 100%;
+	height: 100rpx;
+	flex-wrap: wrap;
+	gap: 70rpx;
+	background-color: red;
+	/* border-radius: 24rpx; */
+}
+.collection-inner-icon {
+	height: 65rpx;
+	width: 65rpx;
+}
+.like-inner-icon {
+}
+.care-inner-icon {
+}
+.friends-inner-icon {
+}
+.set-inner-icon {
+}
+

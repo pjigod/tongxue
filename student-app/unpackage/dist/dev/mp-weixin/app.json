@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/tarbar/my/my",
+    "pages/tarbar/forum/forum",
+    "pages/tarbar/clockin/clockin",
+    "pages/login/login"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#EBECED"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "fontSize": "30rpx",
+    "spacing": "5px",
+    "height": "40px",
+    "list": [
+      {
+        "pagePath": "pages/tarbar/forum/forum",
+        "text": "论坛",
+        "iconPath": "static/image/home.png",
+        "selectedIconPath": "static/image/home-fill.png"
+      },
+      {
+        "pagePath": "pages/tarbar/clockin/clockin",
+        "text": "打卡",
+        "iconPath": "static/image/clockin.png",
+        "selectedIconPath": "static/image/clock-filling.png"
+      },
+      {
+        "pagePath": "pages/tarbar/my/my",
+        "text": "我的",
+        "iconPath": "static/image/user.png",
+        "selectedIconPath": "static/image/person.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
