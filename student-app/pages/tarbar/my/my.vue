@@ -95,6 +95,10 @@
 				</view>
 			</view>
 		</view>
+		<view class="exit">
+			<view class="exit-text"><text style="font-size: 40rpx;color: red;" @click="exit">退出登录</text></view>
+
+		</view>
 	</view>
 </template>
 
@@ -114,6 +118,12 @@
 				uni.navigateTo({
 					url
 				});
+			},
+			exit(){
+				uni.showToast({
+					title: '退出登录',
+					duration: 1500,
+				})
 			}
 		}
 	}
@@ -122,7 +132,7 @@
 <style>
 	.container {
 		display: flex;
-		width: 730rpx;
+		width: 741rpx;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
@@ -385,5 +395,12 @@
 	.set-inner-icon {
 		height: 65rpx;
 		width: 65rpx;
+	}
+	.exit{
+		display: flex;
+		width: 100%;
+		height: 200rpx;
+		justify-content: center;
+		align-items: center;
 	}
 </style>

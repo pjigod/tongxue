@@ -1,6 +1,15 @@
 {
 	"pages": [
 		{
+		    "path" : "pages/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		,{
 		    "path" : "pages/tarbar/my/my",
 		    "style" :                                                                                    
 		    {
@@ -24,15 +33,6 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "打卡",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
@@ -75,6 +75,33 @@
         }
         ,{
             "path" : "pages/tarbar/my/set/set",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/shouldknow",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/forget/forget",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
