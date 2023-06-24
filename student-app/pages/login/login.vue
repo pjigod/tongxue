@@ -30,7 +30,7 @@
 		</view>
 		<view class="temp3"></view>
 		<view class="loginbutton">
-			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:tomato;color:darkblue;"
+			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:black;"
 				@click="toLogin">登录</button>
 		</view>
 		<view class="temp4"></view>

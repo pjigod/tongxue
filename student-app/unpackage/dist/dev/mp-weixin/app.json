@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/tarbar/forum/forum",
     "pages/login/login",
     "pages/tarbar/my/my",
-    "pages/tarbar/forum/forum",
     "pages/tarbar/clockin/clockin",
     "pages/tarbar/my/myCollection",
     "pages/tarbar/my/mylike",
@@ -11,7 +11,8 @@
     "pages/tarbar/my/set/set",
     "pages/login/shouldknow",
     "pages/register/register",
-    "pages/forget/forget"
+    "pages/forget/forget",
+    "pages/alter/alter"
   ],
   "subPackages": [],
   "window": {

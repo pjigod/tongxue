@@ -1,11 +1,22 @@
 {
 	"pages": [
 		{
+		    "path" : "pages/tarbar/forum/forum",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "论坛",
+		        "enablePullDownRefresh": true,
+				"navigationBarBackgroundColor": "#25d3fa"
+		    }
+		    
+		}
+		,{
 		    "path" : "pages/login/login",
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#25d3fa"
 		    }
 		    
 		}
@@ -14,21 +25,12 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "我的",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#25d3fa"
 		    }
 		    
 		}
 		,{
-            "path" : "pages/tarbar/forum/forum",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "论坛",
-                "enablePullDownRefresh": true,
-				"navigationBarBackgroundColor": "#25d3fa"
-            }
-            
-        }
-        ,{
             "path" : "pages/tarbar/clockin/clockin",
             "style" :                                                                                    
             {
@@ -102,6 +104,15 @@
         }
         ,{
             "path" : "pages/forget/forget",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/alter/alter",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

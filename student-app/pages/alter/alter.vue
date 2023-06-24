@@ -2,32 +2,20 @@
 	<view class="container">
 		<view class="temp1"></view>
 		<view class="inner-text">
-			<text
-				style="font-size: 50rpx; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">找回密码</text>
 		</view>
 		<view class="temp2"></view>
 		<view class="inputtext">
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入新密码" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入手机号" />
-				</view>
-				<view class="right-icon1">
-					<view class="registertext"><text style="color: gray;" @click="sendconfirm">发送验证码</text></view>
-				</view>
-			</view>
-			<view class="smalltemp"></view>
-			<view class="inputtext3">
-				<view class="temp7"></view>
-				<view class="left-input3">
-					<input type="text" style="border: none;height: 100%;" placeholder="填写验证码" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请确认新密码" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -35,10 +23,8 @@
 		<view class="temp3"></view>
 		<view class="loginbutton">
 			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:darkblue;"
-				@click="toconfirm">提交</button>
+				@click="toconfirm">确认</button>
 		</view>
-		
-
 
 	</view>
 </template>
@@ -47,7 +33,7 @@
 	export default {
 		data() {
 			return {
-
+				ischecked: false
 			}
 		},
 		methods: {
@@ -62,7 +48,7 @@
 
 			},
 			toconfirm(){
-				this.navTo('/pages/alter/alter')
+				this.navTo('/pages/login/login')
 			}
 		}
 	}
@@ -94,7 +80,7 @@
 	.temp3 {
 		display: flex;
 		width: 100%;
-		height: 120rpx;
+		height: 50rpx;
 
 	}
 
@@ -120,7 +106,6 @@
 	}
 
 	.temp7 {
-		display: flex;
 		height: 100%;
 		width: 15%;
 	}
@@ -140,7 +125,7 @@
 	.inputtext {
 		display: flex;
 		width: 100%;
-		height: 275rpx;
+		height: 250rpx;
 		flex-wrap: wrap;
 	}
 
@@ -152,16 +137,17 @@
 	}
 
 	.left-input1 {
-		display: flex;
 		width: 65%;
 		height: 100%;
 	}
-.right-icon1 {
+
+	.right-icon1 {
 		display: flex;
 		height: 100%;
 		width: 20%;
 
 	}
+
 	.registertext {
 		display: flex;
 		align-items: center;
@@ -175,28 +161,19 @@
 	}
 
 	.left-input1 {
-		display: flex;
 		width: 65%;
 		height: 100%;
 	}
 
 	.left-input2 {
 		width: 65%;
-		display: flex;
 		height: 100%;
 	}
 
-	.inputtext3 {
-		display: flex;
-		width: 100%;
-		height: 120rpx;
-
-	}
-
-	.left-input3 {
-		width: 65%;
+	.right-icon2 {
 		display: flex;
 		height: 100%;
+		width: 20%;
 	}
 
 	.forgettext {
