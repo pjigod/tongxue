@@ -1,7 +1,7 @@
 
 .container {
 	display: flex;
-	width: 741rpx;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
@@ -84,7 +84,7 @@
 	width: 65%;
 	height: 100%;
 }
-.left-input2{
+.left-input2 {
 	width: 65%;
 	height: 100%;
 }
@@ -93,7 +93,7 @@
 	height: 100%;
 	width: 20%;
 }
-.forgettext{
+.forgettext {
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "打卡",
+  "navigationBarTitleText": "学习打卡",
   "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#25d3fa",
   "usingComponents": {}
 }
