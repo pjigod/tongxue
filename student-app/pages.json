@@ -1,0 +1,152 @@
+{
+	"pages": [
+		{
+		    "path" : "pages/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		,{
+		    "path" : "pages/tarbar/my/my",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "我的",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+		,{
+            "path" : "pages/tarbar/forum/forum",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "论坛",
+                "enablePullDownRefresh": true,
+				"navigationBarBackgroundColor": "#25d3fa"
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/clockin/clockin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "打卡",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/my/myCollection",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/my/mylike",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/my/mycare",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/my/myfriends/myfriends",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/my/set/set",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/shouldknow",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/forget/forget",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#EBECED",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	},
+	"tabBar": {
+	    "color": "#7A7E83", //字体颜色
+	    "selectedColor": "#007AFF", //选中时字体颜色
+	    "borderStyle": "black", //底部的上边框线条
+	    "backgroundColor": "#F8F8F8", //底部背景色
+	    "fontSize": "30rpx", //字体大小
+	    "spacing": "5px", //字体到图标的距离
+	    "height": "40px", //底部高
+	    "list": [
+	      {
+	        "pagePath": "pages/tarbar/forum/forum",
+	        "text": "论坛",
+	        "iconPath": "static/image/home.png",//未选中时图片样式
+	        "selectedIconPath": "static/image/home-fill.png"//选中时图片样式
+	      },
+	      {
+	        "pagePath": "pages/tarbar/clockin/clockin",
+	        "text": "打卡",
+	        "iconPath": "static/image/clockin.png",
+	        "selectedIconPath": "static/image/clock-filling.png"
+	      },
+	      {
+	        "pagePath": "pages/tarbar/my/my",
+	        "text": "我的",
+	        "iconPath": "static/image/user.png",
+	        "selectedIconPath": "static/image/person.png"
+	      }
+	    ]
+	  }
+
+}
