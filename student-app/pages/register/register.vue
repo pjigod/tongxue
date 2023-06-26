@@ -12,9 +12,6 @@
 				<view class="left-input1">
 					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
 				</view>
-				<view class="right-icon1">
-					<view class="registertext"><text style="color: gray;" @click="navTo('/pages/register/register')">点击注册</text></view>
-				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext2">
@@ -22,42 +19,28 @@
 				<view class="left-input2">
 					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" />
 				</view>
-				<view class="right-icon2">
-					<view class="forgettext"><text style="color: gray;"@click="navTo('/pages/forget/forget')">忘记密码</text></view>
+			</view>
+			<view class="smalltemp"></view>
+			<view class="inputtext3">
+				<view class="temp7"></view>
+				<view class="left-input3">
+					<input type="password" style="border: none;height: 100%;" placeholder="请确认密码" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 		</view>
 		<view class="temp3"></view>
 		<view class="loginbutton">
-			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:tomato;color:darkblue;"
-				@click="toLogin">登录</button>
+			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:darkblue;"
+				@click="toRegister">注册</button>
 		</view>
 		<view class="temp4"></view>
 		<view class="confirm">
-			<checkbox style=" border-radius: 50%;align-items: center;justify-content: center;" id="shouldknow"
-				:checked="ischecked" @click="change">
-				您已阅读并同意</checkbox><text style="font-weight: bold;"
-				@click="navTo('/pages/login/shouldknow')">《“同学”服务协议》</text>
+			<text>已有账号？</text>
+			<text style="color: blue;" @click="navTo('/pages/login/login')">立即登录</text>
 		</view>
-		<view class="temp5"></view>
-		<view class="otherlogin-text">
-			<text style="color: gray;">-其他登录方式-</text>
-		</view>
-		<view class="temp6">
-	
-		</view>
-		<view class="otherLogin">
-			<view class="wechat">
-				<uni-icons type="weixin" size="30" @click="weixin"></uni-icons>
-			</view>
-			<view class="qq">
-				<uni-icons type="qq" size="30" @click="qq"></uni-icons>
-			</view>
-			<view class="email">
-				<uni-icons type="email" size="30" @click="email"></uni-icons>
-			</view>
-		</view>
+
+
 	</view>
 </template>
 
@@ -65,7 +48,7 @@
 	export default {
 		data() {
 			return {
-				
+
 			}
 		},
 		methods: {
@@ -77,14 +60,17 @@
 				uni.navigateTo({
 					url
 				});
-			
+
+			},
+			toRegister(){
+				uni.navigateBack();
 			}
 		}
 	}
 </script>
 
 <style>
-.container {
+	.container {
 		display: flex;
 		width: 741rpx;
 		justify-content: center;
@@ -96,35 +82,35 @@
 		display: flex;
 		width: 100%;
 		height: 280rpx;
-		
+
 	}
 
 	.temp2 {
 		display: flex;
 		width: 100%;
 		height: 100rpx;
-		
+
 	}
 
 	.temp3 {
 		display: flex;
 		width: 100%;
-		height: 50rpx;
-		
+		height: 120rpx;
+
 	}
 
 	.temp4 {
 		display: flex;
 		width: 100%;
 		height: 20rpx;
-		
+
 	}
 
 	.temp5 {
 		display: flex;
 		width: 100%;
 		height: 150rpx;
-		
+
 	}
 
 	.temp6 {
@@ -135,6 +121,7 @@
 	}
 
 	.temp7 {
+		display: flex;
 		height: 100%;
 		width: 15%;
 	}
@@ -154,7 +141,7 @@
 	.inputtext {
 		display: flex;
 		width: 100%;
-		height: 250rpx;
+		height: 275rpx;
 		flex-wrap: wrap;
 	}
 
@@ -166,15 +153,9 @@
 	}
 
 	.left-input1 {
+		display: flex;
 		width: 65%;
 		height: 100%;
-	}
-
-	.right-icon1 {
-		display: flex;
-		height: 100%;
-		width: 20%;
-
 	}
 
 	.registertext {
@@ -190,19 +171,31 @@
 	}
 
 	.left-input1 {
+		display: flex;
 		width: 65%;
 		height: 100%;
 	}
-	.left-input2{
+
+	.left-input2 {
 		width: 65%;
-		height: 100%;
-	}
-	.right-icon2 {
 		display: flex;
 		height: 100%;
-		width: 20%;
 	}
-	.forgettext{
+
+	.inputtext3 {
+		display: flex;
+		width: 100%;
+		height: 120rpx;
+
+	}
+
+	.left-input3 {
+		width: 65%;
+		display: flex;
+		height: 100%;
+	}
+
+	.forgettext {
 		display: flex;
 		align-items: center;
 		justify-content: center;

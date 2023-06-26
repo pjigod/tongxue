@@ -1,6 +1,26 @@
 {
 	"pages": [
 		{
+		    "path" : "pages/tarbar/clockin/clockin",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "学习打卡",
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#25d3fa"
+		    }
+		    
+		}
+		,{
+		    "path" : "pages/tarbar/forum/forum",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "论坛",
+		        "enablePullDownRefresh": true,
+				"navigationBarBackgroundColor": "#25d3fa"
+		    }
+		    
+		}
+		,{
 		    "path" : "pages/login/login",
 		    "style" :                                                                                    
 		    {
@@ -14,30 +34,12 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "我的",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#25d3fa"
 		    }
 		    
 		}
 		,{
-            "path" : "pages/tarbar/forum/forum",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "论坛",
-                "enablePullDownRefresh": true,
-				"navigationBarBackgroundColor": "#25d3fa"
-            }
-            
-        }
-        ,{
-            "path" : "pages/tarbar/clockin/clockin",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "打卡",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
             "path" : "pages/tarbar/my/myCollection",
             "style" :                                                                                    
             {
@@ -109,6 +111,51 @@
             }
             
         }
+        ,{
+            "path" : "pages/alter/alter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/clockin/beginstudy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/clockin/ranking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/clockin/schedule",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tarbar/clockin/record",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -118,6 +165,7 @@
 		"app-plus": {
 			"background": "#efeff4"
 		}
+	
 	},
 	"tabBar": {
 	    "color": "#7A7E83", //字体颜色

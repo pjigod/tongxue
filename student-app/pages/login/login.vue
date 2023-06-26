@@ -13,7 +13,8 @@
 					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
 				</view>
 				<view class="right-icon1">
-					<view class="registertext"><text style="color: gray;" @click="navTo('/pages/register/register')">点击注册</text></view>
+					<view class="registertext"><text style="color: gray;"
+							@click="navTo('/pages/register/register')">点击注册</text></view>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -23,14 +24,15 @@
 					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" />
 				</view>
 				<view class="right-icon2">
-					<view class="forgettext"><text style="color: gray;"@click="navTo('/pages/forget/forget')">忘记密码</text></view>
+					<view class="forgettext"><text style="color: gray;"
+							@click="navTo('/pages/forget/forget')">忘记密码</text></view>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 		</view>
 		<view class="temp3"></view>
 		<view class="loginbutton">
-			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:tomato;color:darkblue;"
+			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:black;"
 				@click="toLogin">登录</button>
 		</view>
 		<view class="temp4"></view>
@@ -81,10 +83,11 @@
 			},
 			toLogin() {
 				if (this.ischecked) {
-					uni.showToast({
-						title: '登录',
-						duration: 1500
+					uni.switchTab({
+						url: "/pages/tarbar/forum/forum"
 					})
+					
+					
 				} else {
 					uni.showToast({
 						title: '请先同意协议',
@@ -128,7 +131,7 @@
 <style>
 	.container {
 		display: flex;
-		width: 741rpx;
+		width: 100%;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
@@ -138,35 +141,35 @@
 		display: flex;
 		width: 100%;
 		height: 280rpx;
-		
+
 	}
 
 	.temp2 {
 		display: flex;
 		width: 100%;
 		height: 100rpx;
-		
+
 	}
 
 	.temp3 {
 		display: flex;
 		width: 100%;
 		height: 50rpx;
-		
+
 	}
 
 	.temp4 {
 		display: flex;
 		width: 100%;
 		height: 20rpx;
-		
+
 	}
 
 	.temp5 {
 		display: flex;
 		width: 100%;
 		height: 150rpx;
-		
+
 	}
 
 	.temp6 {
@@ -235,16 +238,19 @@
 		width: 65%;
 		height: 100%;
 	}
-	.left-input2{
+
+	.left-input2 {
 		width: 65%;
 		height: 100%;
 	}
+
 	.right-icon2 {
 		display: flex;
 		height: 100%;
 		width: 20%;
 	}
-	.forgettext{
+
+	.forgettext {
 		display: flex;
 		align-items: center;
 		justify-content: center;
