@@ -165,6 +165,7 @@
 		"app-plus": {
 			"background": "#efeff4"
 		}
+	
 	},
 	"tabBar": {
 	    "color": "#7A7E83", //字体颜色
