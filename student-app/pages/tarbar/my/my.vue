@@ -39,7 +39,7 @@
 			<view class="myLike" @click="navTo('/pages/tarbar/my/mylike')">
 				<view class="like-image">
 					<view class="like-inner-icon">
-							<img src="../../../static/image/header.png" style="height: 100%;width: 100%;"></img>
+						<img src="../../../static/image/header.png" style="height: 100%;width: 100%;"></img>
 					</view>
 				</view>
 				<view class="like-text">
@@ -54,7 +54,7 @@
 			<view class="mycare" @click="navTo('/pages/tarbar/my/mycare')">
 				<view class="care-image">
 					<view class="care-inner-icon">
-							<img src="../../../static/image/mycare.png" style="height: 100%;width: 100%;"></img>
+						<img src="../../../static/image/mycare.png" style="height: 100%;width: 100%;"></img>
 					</view>
 				</view>
 				<view class="care-text">
@@ -69,7 +69,7 @@
 			<view class="myfriends" @click="navTo('/pages/tarbar/my/myfriends/myfriends')">
 				<view class="friends-image">
 					<view class="friends-inner-icon">
-							<img src="../../../static/image/friends.png" style="height: 100%;width: 100%;"></img>
+						<img src="../../../static/image/friends.png" style="height: 100%;width: 100%;"></img>
 					</view>
 				</view>
 				<view class="friends-text">
@@ -84,7 +84,7 @@
 			<view class="set" @click="navTo('/pages/tarbar/my/set/set')">
 				<view class="set-image">
 					<view class="set-inner-icon">
-							<img src="../../../static/image/set.png" style="height: 100%;width: 100%;"></img>
+						<img src="../../../static/image/set.png" style="height: 100%;width: 100%;"></img>
 					</view>
 				</view>
 				<view class="set-text">
@@ -119,7 +119,7 @@
 					url
 				});
 			},
-			exit(){
+			exit() {
 				uni.showToast({
 					title: '退出登录',
 					duration: 1500,
@@ -261,7 +261,8 @@
 		align-items: center;
 		/* 	border-radius: 24rpx; */
 	}
-	.like-image{
+
+	.like-image {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -269,18 +270,21 @@
 		height: 100%;
 		margin-left: 20rpx;
 	}
-	.like-text{
+
+	.like-text {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 	}
-	.like-nextto{
+
+	.like-nextto {
 		display: flex;
 		width: 65rpx;
 		height: 65rpx;
 		margin-left: auto;
 	}
+
 	.mycare {
 		display: flex;
 		width: 100%;
@@ -290,7 +294,8 @@
 		align-items: center;
 		/* 		border-radius: 24rpx; */
 	}
-	.care-image{
+
+	.care-image {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -298,13 +303,15 @@
 		height: 100%;
 		margin-left: 20rpx;
 	}
-	.care-text{
+
+	.care-text {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 	}
-	.care-nextto{
+
+	.care-nextto {
 		display: flex;
 		width: 65rpx;
 		height: 65rpx;
@@ -320,7 +327,8 @@
 		align-items: center;
 		/* border-radius: 24rpx; */
 	}
-	.friends-image{
+
+	.friends-image {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -328,13 +336,15 @@
 		height: 100%;
 		margin-left: 20rpx;
 	}
-	.friends-text{
+
+	.friends-text {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 	}
-	.friends-nextto{
+
+	.friends-nextto {
 		display: flex;
 		width: 65rpx;
 		height: 65rpx;
@@ -350,7 +360,8 @@
 		align-items: center;
 		/* border-radius: 24rpx; */
 	}
-	.set-image{
+
+	.set-image {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
@@ -358,13 +369,15 @@
 		height: 100%;
 		margin-left: 20rpx;
 	}
-	.set-text{
+
+	.set-text {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 100%;
 	}
-	.set-nextto{
+
+	.set-nextto {
 		display: flex;
 		width: 65rpx;
 		height: 65rpx;
@@ -396,7 +409,8 @@
 		height: 65rpx;
 		width: 65rpx;
 	}
-	.exit{
+
+	.exit {
 		display: flex;
 		width: 100%;
 		height: 200rpx;

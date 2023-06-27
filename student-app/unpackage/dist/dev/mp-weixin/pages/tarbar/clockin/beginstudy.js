@@ -219,7 +219,9 @@ var _default = {
       }],
       index: 0,
       minute: 0,
-      hour: 0
+      hour: 0,
+      finalhour: 0,
+      finalminute: 0
     };
   },
   methods: {
@@ -228,8 +230,10 @@ var _default = {
       this.multiIndex[e.detail.column] = e.detail.value;
       if (e.detail.column == 0) {
         this.hour = this.multiArray[0][e.detail.value];
+        this.finalhour = this.multiArray[0][e.detail.value];
       } else if (e.detail.column == 1) {
         this.minute = this.multiArray[1][e.detail.value];
+        this.finalminute = this.multiArray[1][e.detail.value];
       }
       this.$forceUpdate();
     },
@@ -256,13 +260,25 @@ var _default = {
           _this.minute = 59;
         } else {
           clearInterval(_this.timer);
+          // 到时候传到后端
         }
-        console.log(_this.hour);
-        console.log(_this.minute);
-      }, 60000);
+        // console.log(this.hour);
+        // console.log(this.minute);
+        // console.log(this.finalhour);
+        // console.log(this.finalminute);
+      }, 1000);
     },
     endCountDown: function endCountDown() {
       clearInterval(this.timer);
+      uni.showToast({
+        title: '本次打卡无效',
+        icon: 'error'
+      });
+      setTimeout(function () {
+        uni.switchTab({
+          url: '/pages/tarbar/clockin/clockin'
+        });
+      }, 1000);
     }
   }
 };

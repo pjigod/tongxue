@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/tarbar/clockin/clockin",
     "pages/tarbar/forum/forum",
+    "pages/tarbar/clockin/clockin",
     "pages/login/login",
     "pages/tarbar/my/my",
     "pages/tarbar/my/myCollection",
@@ -16,7 +16,14 @@
     "pages/tarbar/clockin/beginstudy",
     "pages/tarbar/clockin/ranking",
     "pages/tarbar/clockin/schedule",
-    "pages/tarbar/clockin/record"
+    "pages/tarbar/clockin/record",
+    "pages/tarbar/my/set/alterimage",
+    "pages/tarbar/my/set/alterpassword",
+    "pages/tarbar/my/set/alteremail",
+    "pages/tarbar/my/set/alterphone",
+    "pages/tarbar/my/set/abouttongxue/abouttongxue",
+    "pages/search/search",
+    "pages/searchlist/searchlist"
   ],
   "subPackages": [],
   "window": {

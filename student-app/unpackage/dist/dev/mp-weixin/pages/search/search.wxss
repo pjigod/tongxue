@@ -1,0 +1,80 @@
+
+.container {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+.search-content {
+	height: 100rpx;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.left-icon {
+	display: flex;
+	height: 60rpx;
+	width: 8%;
+	margin-left: 15rpx;
+}
+.searchinput {
+	display: flex;
+	width: 70%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.searchtext {
+	display: flex;
+	height: 100%;
+	width: 10%;
+	justify-content: center;
+	align-items: center;
+}
+.lines {
+	width: 100%;
+	height: 2rpx;
+	background-color: #e1e1e1;
+}
+.searchitems {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	padding: 20rpx;
+}
+.left-text {
+	margin-left: 15rpx;
+	margin-top: 10rpx;
+}
+.right-icon {
+	display: flex;
+	width: 40rpx;
+	height: 40rpx;
+}
+.headtext {
+	display: flex;
+	width: 100%;
+	height: 50rpx;
+	justify-content: space-between;
+	align-items: center;
+}
+.concreteitems {
+	display: flex;
+	width: 100%;
+	gap: 20rpx;
+	flex-wrap: wrap;
+}
+.item1 {
+	padding: 4rpx 24rpx;
+	background-color: #e1e1e1;
+	display: inline-block;
+	border-radius: 26rpx;
+	margin: 20rpx;
+}
+.item2 {
+	padding: 4rpx 24rpx;
+	background-color: #e1e1e1;
+	display: inline-block;
+	border-radius: 26rpx;
+	margin: 20rpx;
+}
+

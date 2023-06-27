@@ -88,6 +88,8 @@
 				index: 0,
 				minute: 0,
 				hour: 0,
+				finalhour:0,
+				finalminute:0
 			}
 		},
 		methods: {
@@ -96,10 +98,10 @@
 				this.multiIndex[e.detail.column] = e.detail.value;
 				if (e.detail.column == 0) {
 					this.hour = this.multiArray[0][e.detail.value];
-
+					this.finalhour = this.multiArray[0][e.detail.value];
 				} else if (e.detail.column == 1) {
 					this.minute = this.multiArray[1][e.detail.value];
-
+					this.finalminute = this.multiArray[1][e.detail.value];
 				}
 				this.$forceUpdate();
 
@@ -118,6 +120,7 @@
 			bindTimeChange(e) {
 				this.time = e.detail.value;
 			},
+			
 			startCountDown() {
 				// 启动计时器
 				this.timer = setInterval(() => {
@@ -131,15 +134,26 @@
 						}
 						else{
 							clearInterval(this.timer);
-
+							// 到时候传到后端
 						}
-						console.log(this.hour);
-						console.log(this.minute);
+						// console.log(this.hour);
+						// console.log(this.minute);
+						// console.log(this.finalhour);
+						// console.log(this.finalminute);
 
-				}, 60000);
+				}, 1000);
 			},
 			endCountDown(){
 				clearInterval(this.timer);
+				uni.showToast({
+					title:'本次打卡无效',
+					icon:'error'
+				});
+				setTimeout(function(){
+				    uni.switchTab({
+				        url: '/pages/tarbar/clockin/clockin'
+				    });
+				}, 1000); 
 			}
 
 		},
