@@ -177,6 +177,15 @@
             }
             
         }
+        ,{
+            "path" : "components/common/post",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

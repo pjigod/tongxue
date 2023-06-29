@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "",
   "navigationBarBackgroundColor": "#25d3fa",
-  "usingComponents": {}
+  "usingComponents": {
+    "post-list": "/components/common/postList"
+  }
 }

@@ -23,7 +23,8 @@
     "pages/tarbar/my/set/alterphone",
     "pages/tarbar/my/set/abouttongxue/abouttongxue",
     "pages/search/search",
-    "pages/searchlist/searchlist"
+    "pages/searchlist/searchlist",
+    "components/common/post"
   ],
   "subPackages": [],
   "window": {

@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view>
 		<view class="search-content">
 			<view class="temp1" @click="navTo('/pages/search/search')">
 				<img src="../../../static/image/search.png" style="height: 100%;width: 100%;"></img>
@@ -11,15 +11,58 @@
 
 			</view>
 		</view>
+		<view class="topbar">
+			<scroll-view scroll-x="true" class="scroll-content">
+				<view class="scroll-item" v-for='(item,index) in topBar' :key="index" @tap="changeIndex(index)">
+					<text :class='topBarindex===index?"scroll-text":"f-color"'>{{item.name}}</text>
+				</view>
+			</scroll-view>
+			<swiper @change="onchangebar" :current="topBarindex"  :style="'height:'+clentheight+'px;'">
+				<swiper-item >
+					<view class="home-data">
+						<post-list></post-list>
+
+					</view>
+
+				</swiper-item>
+				<!-- <swiper-item v-for='(item,index) in topBar'
+				:key="index">
+					<view>
+						<postList></postList>
+					</view>
+				</swiper-item> -->
+				<swiper-item>
+					<view>
+						11111
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+
 	</view>
 </template>
 
 <script>
+	import postList from '@/components/common/postList.vue'
 	export default {
 		data() {
 			return {
-
+				clentheight:0,
+				topBarindex: 0,
+				topBar: [{
+						name: '关注'
+					},
+					{
+						name: '推荐'
+					},
+					{
+						name: '热门'
+					}
+				]
 			}
+		},
+		components: {
+			postList
 		},
 		methods: {
 			navTo(url) {
@@ -30,7 +73,24 @@
 				uni.navigateTo({
 					url
 				});
+			},
+			changeIndex(index) {
+				if (this.topBarindex === index) {
+					return;
+				} else
+					this.topBarindex = index;
+			},
+			onchangebar(e) {
+				this.changeIndex(e.detail.current)
 			}
+		},
+		onReady(){
+			let view=uni.createSelectorQuery().select('.home-data');
+			view.boundingClientRect(data=>{
+				this.clentheight=data.height;
+				console.log(data.height);
+			}
+			).exec();
 		}
 	}
 </script>
@@ -40,6 +100,7 @@
 		display: flex;
 		width: 100%;
 		flex-wrap: wrap;
+		height: 100%;
 	}
 
 	.search-content {
@@ -70,5 +131,37 @@
 		height: 60rpx;
 		width: 8%;
 		margin-right: 15rpx;
+	}
+
+	.scroll-content {
+		display: flex;
+		width: 100%;
+		height: 80rpx;
+		white-space: nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.scroll-item {
+		display: flex;
+		display: inline-block;
+		padding: 10rpx 30rpx;
+		font-size: 36rpx;
+		margin-left: 90rpx;
+	}
+
+	.scroll-text {
+		padding: 10rpx 0;
+		color: #49bdfb;
+		font-size: 40rpx;
+		border-bottom: 6rpx solid #49bdfb;
+	}
+
+	.f-color {
+		padding: 10rpx 0;
+		color: #636263;
+	}
+	.home-data{
+		width: 100%;
 	}
 </style>

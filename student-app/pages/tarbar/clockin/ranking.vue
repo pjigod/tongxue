@@ -1,10 +1,11 @@
 <template>
 	<view>
-		<text>paihangbang</text>
+		<postList></postList>
 	</view>
 </template>
 
 <script>
+	import postList from '@/components/common/postList.vue'
 	export default {
 		data() {
 			return {
@@ -13,6 +14,9 @@
 		},
 		methods: {
 			
+		},
+		components:{
+			postList
 		}
 	}
 </script>

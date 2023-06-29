@@ -46,7 +46,7 @@
 		<view class="button-space">
 			<view class="time-buttons">
 				<view class="begin-button">
-					<button style="background-color: #25d3fa;" @click="startCountDown">开始计时</button>
+					<button style="background-color: #25d3fa;" @click="beginstudy()">开始计时</button>
 				</view>
 				<view class="end-button">
 					<button style="background-color: #25d3fa;" @click="endCountDown">结束计时</button>
@@ -89,7 +89,10 @@
 				minute: 0,
 				hour: 0,
 				finalhour:0,
-				finalminute:0
+				finalminute:0,
+				data:'数据结构',
+				dataStatus:false,
+				timeStatus:false
 			}
 		},
 		methods: {
@@ -103,24 +106,74 @@
 					this.minute = this.multiArray[1][e.detail.value];
 					this.finalminute = this.multiArray[1][e.detail.value];
 				}
+				if(this.hour!=0||this.minute!=0){
+					this.timeStatus=true;
+				}
+				else{
+					this.timeStatus=false;
+				}
 				this.$forceUpdate();
 
 			},
 			bindPickerChange(e) {
 				if (e.detail.value == 0) {
+					this.dataStatus=false;
 					uni.showToast({
 						duration: (1500),
 						icon: 'error',
 						title: "请重新选择"
 					})
-				} else
+				} else{
 					this.index = e.detail.value;
-
+					this.data=this.array[e.detail.value].name;
+					this.dataStatus=true
+					}
 			},
 			bindTimeChange(e) {
 				this.time = e.detail.value;
 			},
-			
+			toSubmit(){
+				uni.request({
+					url:'http://121.43.48.56/user/clockin',
+					method:'GET',
+					data:{
+						AccountID:111111,
+						ClockInhour:this.finalhour,
+						Content:this.data,
+						ClockInmin:this.finalminute
+						
+					}
+				})
+			},
+			beginstudy(){
+				if(this.dataStatus==true&&this.timeStatus==true){
+					uni.showToast({
+						title:'开始打卡'
+					})
+					this.startCountDown();
+				}
+				if(this.dataStatus==false&&this.timeStatus==true){
+					uni.showToast({
+						title:'请选择学习内容',
+						icon:'error',
+						duration:1000
+					})
+				}
+				if(this.dataStatus==true&&this.timeStatus==false){
+					uni.showToast({
+						title:'请选择学习时间',
+						icon:'error',
+						duration:1000
+					})
+				}
+				if(this.dataStatus==false&&this.timeStatus==false){
+					uni.showToast({
+						title:'请选择学习内容和时间',
+						icon:'error',
+						duration:1000
+					})
+				}
+			},
 			startCountDown() {
 				// 启动计时器
 				this.timer = setInterval(() => {
@@ -134,6 +187,13 @@
 						}
 						else{
 							clearInterval(this.timer);
+							uni.showToast({
+								title:'本次打卡成功',
+						
+							})
+							console.log(this.finalhour);
+							console.log(this.finalminute);
+							this.toSubmit();
 							// 到时候传到后端
 						}
 						// console.log(this.hour);

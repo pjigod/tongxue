@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "post": "/components/common/post"
+  },
+  "component": true
+}

@@ -10,7 +10,7 @@
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" :value="AccountId"/>
 				</view>
 				<view class="right-icon1">
 					<view class="registertext"><text style="color: gray;"
@@ -21,7 +21,7 @@
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" />
+					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" :value="Password"/>
 				</view>
 				<view class="right-icon2">
 					<view class="forgettext"><text style="color: gray;"
@@ -67,7 +67,9 @@
 	export default {
 		data() {
 			return {
-				ischecked: false
+				ischecked: false,
+				AccountId:'111111',
+				Password:'111111'
 			}
 		},
 		methods: {
@@ -83,11 +85,23 @@
 			},
 			toLogin() {
 				if (this.ischecked) {
-					uni.switchTab({
-						url: "/pages/tarbar/forum/forum"
+					uni.request({
+						url:'http://121.43.48.56/user/login',
+						method:'GET',
+						data:{
+							AccountId:this.AccountId,
+							Password:this.Password
+						},
+						success() {
+							console.log(true);
+						}
 					})
-					
-					
+					console.log(this.AccountId);
+					console.log(this.Password);
+					// uni.switchTab({
+					// 	url: "/pages/tarbar/forum/forum"
+					// })
+
 				} else {
 					uni.showToast({
 						title: '请先同意协议',

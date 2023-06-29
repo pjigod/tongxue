@@ -1,0 +1,1 @@
+<view><block wx:for="{{postList}}" wx:for-item="Post" wx:for-index="index" wx:key="postid"><post vue-id="{{'4232444f-1-'+index}}" postid="{{Post.postid}}" imgUrl="{{Post.imgUrl}}" posttitle="{{Post.posttitle}}" posttext="{{Post.posttext}}" likeNum="{{Post.likeNum}}" commentNum="{{Post.commentNum}}" collectionNum="{{Post.collectionNum}}" bind:__l="__l"></post></block></view>

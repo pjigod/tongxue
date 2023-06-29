@@ -1,1 +1,1 @@
-<view><text>paihangbang</text></view>
+<view><post-list vue-id="6239e418-1" bind:__l="__l"></post-list></view>

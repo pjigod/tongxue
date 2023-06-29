@@ -2,7 +2,10 @@
 	<view class="container">
 		<view class="top-switch">
 			<view class="single">
-				<view class="single-text"> <text style="font-size: 40rpx;color: #25d3fa">个人</text></view>
+				<view class="single-text"> <text style="padding: 10rpx 0;
+		color: #49bdfb;
+		font-size: 40rpx;
+		border-bottom: 6rpx solid #49bdfb;">个人</text></view>
 			</view>
 			<view class="team">
 				<view class="team-text"> <text style="font-size: 40rpx;color: black">团队</text></view>
@@ -21,24 +24,28 @@
 			<view class="other">
 				<view class="ranking">
 					<view class="icon">
-						<img src="../../../static/image/165ranking.png" style="height: 100%;width: 100%;" @click="navTo('/pages/tarbar/clockin/ranking')"></img>
+						<img src="../../../static/image/165ranking.png" style="height: 100%;width: 100%;"
+							@click="navTo('/pages/tarbar/clockin/ranking')"></img>
 					</view>
 				</view>
 				<view class="schedule">
 					<view class="icon">
-						<img src="../../../static/image/schedule.png" style="height: 100%;width: 100%;" @click="navTo('/pages/tarbar/clockin/schedule')"></img>
+						<img src="../../../static/image/schedule.png" style="height: 100%;width: 100%;"
+							@click="navTo('/pages/tarbar/clockin/schedule')"></img>
 					</view>
 				</view>
 				<view class="record">
 					<view class="icon">
-						<img src="../../../static/image/records.png" style="height: 100%;width: 100%;" @click="navTo('/pages/tarbar/clockin/record')"></img>
+						<img src="../../../static/image/records.png" style="height: 100%;width: 100%;"
+							@click="navTo('/pages/tarbar/clockin/record')"></img>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="temp2"></view>
 		<view class="begin">
-			<view class="begin-button"> <button style="width: 100%;" @click="navTo('/pages/tarbar/clockin/beginstudy')">进入学习</button></view>
+			<view class="begin-button"> <button style="width: 100%;"
+					@click="navTo('/pages/tarbar/clockin/beginstudy')">进入学习</button></view>
 
 		</view>
 	</view>
