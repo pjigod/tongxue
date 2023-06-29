@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class accounttb {
+public class Rank {
     String AccountId;
     String NickName;
-    String Email;
-    String Password;
-    String Avatar;
-
+    int totaltime;
 }

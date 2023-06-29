@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class accounttb {
-    String AccountId;
-    String NickName;
-    String Email;
-    String Password;
-    String Avatar;
+public class ClockIn {
+    int ClockInId;
+    int ClockInTime;
+    LocalDateTime date;
+    String Content;
 
 }

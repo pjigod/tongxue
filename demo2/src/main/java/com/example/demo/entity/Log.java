@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class accounttb {
+public class Log {
     String AccountId;
-    String NickName;
-    String Email;
-    String Password;
-    String Avatar;
+    String IP;
+    String LogTime;
+    int LogId;
 
 }

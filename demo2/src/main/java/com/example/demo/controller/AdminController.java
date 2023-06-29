@@ -1,0 +1,69 @@
+package com.example.demo.controller;
+
+import com.example.demo.entity.*;
+import com.example.demo.mapper.AdminLogMapper;
+import com.example.demo.mapper.ClockInMapper;
+import com.example.demo.mapper.LogMapper;
+import com.example.demo.mapper.UserMapper;
+import com.example.demo.service.FileUploadService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@CrossOrigin
+public class AdminController {
+    @Autowired
+    UserMapper mapper;
+    @Autowired
+    LogMapper logMapper;
+    @Autowired
+    FileUploadService fservice;
+    @Autowired
+    AdminLogMapper adminLogMapper;
+    @Autowired
+    ClockInMapper clockInMapper;
+    @RequestMapping("/admin/login")
+    public boolean adminLogin(@RequestParam("username") String AdminId,@RequestParam("password") String AdminPassword)throws IOException {
+        return AdminId.equals("admin") && AdminPassword.equals("111111");
+    }
+    @RequestMapping("/admin/all")
+    public List<accounttb> displayalluser(){
+        return mapper.findalluser();
+    }
+    @RequestMapping("/admin/all/delete")
+    public boolean deleteuser(String AccountId){
+        return mapper.DeleteByID(AccountId);
+    }
+    @RequestMapping("/admin/all/alter")
+    public accounttb alteruser(@RequestParam("AccountId") String AccountId,@RequestParam(value = "Password",required = false) String Password,@RequestParam(value = "EMail",required = false)String EMail,@RequestParam(value = "NickName",required = false)String NickName,@RequestParam(value = "photo",required = false)MultipartFile photo,HttpServletRequest request) throws IOException{
+        if(photo!=null) fservice.uploadAvator(AccountId,photo,request);
+        if(EMail!=null)mapper.updateEmail(AccountId,EMail);
+        if(Password!=null)mapper.updatePassword(AccountId,Password);
+        if(NickName!=null)mapper.updateNickname(AccountId,NickName);
+        return mapper.Userinfo(AccountId);
+    }
+    @RequestMapping("/admin/log")
+    public List<Log> getalllog(){
+        return logMapper.getalllog();
+    }
+    @RequestMapping("/admin/main/all")
+    public List<AdminLog> getadminlog(){
+        return adminLogMapper.getAdminlog();
+    }
+    @RequestMapping("/admin/main/count")
+    public Count getAllCount(){
+        Count count=clockInMapper.getAllClockInCount();
+        count.usercount=mapper.getUserCount();
+        count.clockintime/=60;
+        return count;
+    }
+}

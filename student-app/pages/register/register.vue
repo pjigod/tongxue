@@ -83,7 +83,7 @@
 				if (this.ischecked) {
 					console.log(this.AccountId,this.Password),
 					uni.request({
-					  url: 'http://localhost:8080/user/login',
+					  url: 'http://121.48.43.56/user/register',
 					  method: 'GET',
 					  data:{
 						  AccountId:this.AccountId.valueOf(),
