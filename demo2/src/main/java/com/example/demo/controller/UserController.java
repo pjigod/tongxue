@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 import com.example.demo.entity.accounttb;
+import com.example.demo.entity.UserInfo;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.FileUploadService;
+import com.example.demo.service.PhotoService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,10 @@ public class UserController {
     @Autowired
     private FileUploadService fservice;
     @Autowired
+    private PhotoService photoService;
+    @Autowired
     private UserMapper mapper;
-    @GetMapping("all")
+    @RequestMapping("all")
     public List<accounttb> getAllUser(){
         List<accounttb> allUser=service.findalluser();
         return  allUser;
@@ -32,7 +36,8 @@ public class UserController {
         System.out.println(Password);
         return service.login(AccountId,Password,request);
     }
-    @GetMapping("register")
+
+    @RequestMapping("register")
     public boolean register(@RequestParam("AccountId") String AccountId,@RequestParam("Password") String Password){
         System.out.println(AccountId);
         System.out.println(Password);
@@ -40,15 +45,36 @@ public class UserController {
     }
     @RequestMapping("info")
     public accounttb getuserinfo(@RequestParam("AccountId")String AccountId){
+        System.out.println(AccountId);
         return service.Userinfo(AccountId);
     }
-    @RequestMapping("updateinfo")
-    public accounttb updateuserinfo(@RequestParam("AccountId") String AccountId,@RequestParam(value = "Password",required = false) String Password,@RequestParam(value = "EMail",required = false)String EMail,@RequestParam(value = "NickName",required = false)String NickName,@RequestParam(value = "photo",required = false)
-    MultipartFile photo,HttpServletRequest request) throws IOException {
-        if(photo!=null) fservice.uploadAvator(AccountId,photo,request);
-        if(EMail!=null)mapper.updateEmail(AccountId,EMail);
+    @RequestMapping("info/test")
+    public UserInfo getuserinfotest(@RequestParam("AccountId")String AccountId) throws IOException{
+        UserInfo userInfo=new UserInfo();
+        userInfo.setPhoto(photoService.getImg(AccountId));
+        accounttb accounttb=service.Userinfo(AccountId);
+        userInfo.setNickName(accounttb.getNickName());
+        userInfo.setEMail(accounttb.getEmail());
+        return userInfo;
+    }
+    @RequestMapping("update/password")
+    public accounttb updateUserpassword(@RequestParam("AccountId") String AccountId,@RequestParam("Password") String Password) throws IOException {
         if(Password!=null)mapper.updatePassword(AccountId,Password);
+        return service.Userinfo(AccountId);
+    }
+    @RequestMapping("update/email")
+    public accounttb updateUserEMail(@RequestParam("AccountId") String AccountId,@RequestParam("EMail")String EMail) throws IOException {
+        if(EMail!=null)mapper.updateEmail(AccountId,EMail);
+        return service.Userinfo(AccountId);
+    }
+    @RequestMapping("update/nickname")
+    public accounttb updateUserNickName(@RequestParam("AccountId") String AccountId,@RequestParam("NickName")String NickName) throws IOException {
         if(NickName!=null)mapper.updateNickname(AccountId,NickName);
+        return service.Userinfo(AccountId);
+    }
+    @RequestMapping("update/avatar")
+    public accounttb updateUserAvatar(@RequestParam("AccountId") String AccountId,@RequestParam("photo") MultipartFile photo,HttpServletRequest request) throws IOException {
+        if(photo!=null) fservice.uploadAvator(AccountId,photo,request);
         return service.Userinfo(AccountId);
     }
 //    @GetMapping("query/{id}")

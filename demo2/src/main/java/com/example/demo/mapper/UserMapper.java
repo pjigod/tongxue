@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Rank;
 import com.example.demo.entity.accounttb;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -39,4 +40,9 @@ public interface UserMapper extends BaseMapper<accounttb> {
     int gettotaltime(@Param("AccountId") String AccountId);
     @Select("select count(*) from accounttb")
     int getUserCount();
+    @Insert("Insert into accounttb values(#{AccountId},#{NickName},#{EMail},#{Password},null)")
+    boolean insertuser(@Param("AccountId") String AccountId, @Param("Password") String Password, @Param("EMail")String EMail, @Param("NickName")String NickName);
+
+
+
 }

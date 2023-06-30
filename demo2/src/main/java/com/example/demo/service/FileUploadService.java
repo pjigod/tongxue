@@ -15,7 +15,7 @@ public class FileUploadService implements IFileUploadService{
     public String uploadAvator(String AccountId, MultipartFile photo, HttpServletRequest request)throws IOException {
         System.out.println(photo.getOriginalFilename());
         System.out.println(photo.getContentType());
-        String path =request.getServletContext().getRealPath("/upload/");
+        String path ="C:/upload/";
         System.out.println(path+photo.getOriginalFilename());
         String filename = photo.getOriginalFilename();
         String contentType;

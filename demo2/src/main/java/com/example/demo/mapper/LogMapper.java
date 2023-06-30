@@ -13,6 +13,6 @@ import java.util.List;
 public interface LogMapper {
     @Insert("insert into log values(#{AccountId},#{LogTime},#{IP},null,null)")
     void writelog(@Param("AccountId") String AccountId, @Param("LogTime") LocalDateTime LogTime,@Param("IP") String IP);
-    @Select("select * from log")
+    @Select("select * from log order by LogId desc")
     List<Log> getalllog();
 }

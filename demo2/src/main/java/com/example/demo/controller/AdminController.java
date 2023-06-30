@@ -35,6 +35,10 @@ public class AdminController {
     public boolean adminLogin(@RequestParam("username") String AdminId,@RequestParam("password") String AdminPassword)throws IOException {
         return AdminId.equals("admin") && AdminPassword.equals("111111");
     }
+    @RequestMapping("/admin/queryuser")
+    public accounttb adminQueryUser(@RequestParam("AccountId")String AccountId){
+        return mapper.Userinfo(AccountId);
+    }
     @RequestMapping("/admin/all")
     public List<accounttb> displayalluser(){
         return mapper.findalluser();
@@ -65,5 +69,12 @@ public class AdminController {
         count.usercount=mapper.getUserCount();
         count.clockintime/=60;
         return count;
+    }
+    @RequestMapping("/admin/all/insert")
+    public accounttb insertuser(@RequestParam("AccountId") String AccountId,@RequestParam("Password") String Password,@RequestParam("EMail")String EMail,@RequestParam("NickName")String NickName)
+    {
+        if(mapper.insertuser(AccountId,Password,EMail,NickName))return mapper.Userinfo(AccountId);
+        else return null;
+
     }
 }
