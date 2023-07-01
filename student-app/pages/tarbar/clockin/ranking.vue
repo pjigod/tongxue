@@ -1,7 +1,7 @@
 <template>
-	<view>
-		<postList></postList>
-	</view>
+	  <!-- <view>
+	    <text v-for="(item, index) in dataList" :key="index">{{ item.totaltime}}</text>
+	  </view> -->
 </template>
 
 <script>
@@ -9,13 +9,24 @@
 	export default {
 		data() {
 			return {
-				
+				dataList: []
 			}
 		},
 		methods: {
-			
+
 		},
-		components:{
+		onLoad() {
+		this.$request({
+			url:'/user/rank',
+			methods:'GET',
+		}).then(res=>{
+			console.log(res);
+			this.dataList=res;
+		}).catch(err=>{
+			console.log(err);
+		})
+		},
+		components: {
 			postList
 		}
 	}

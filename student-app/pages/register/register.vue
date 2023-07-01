@@ -10,21 +10,21 @@
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" v-model="AccountId"/>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" />
+					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" v-model="Password"/>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext3">
 				<view class="temp7"></view>
 				<view class="left-input3">
-					<input type="password" style="border: none;height: 100%;" placeholder="请确认密码" />
+					<input type="password" style="border: none;height: 100%;" placeholder="请确认密码" v-model="Confirm"/>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -48,7 +48,10 @@
 	export default {
 		data() {
 			return {
-
+				AccountId:'',
+				Password:'',
+				Confirm:'',
+				isConfirmed:false
 			}
 		},
 		methods: {
@@ -63,7 +66,35 @@
 
 			},
 			toRegister(){
-				uni.navigateBack();
+				if(this.Password===this.Confirm){
+					this.isConfirmed=true;
+					this.$request({
+						url:'/user/register',
+						method:'GET',
+						data:{
+							AccountId:this.AccountId,
+							Password:this.Password
+						}
+					}).then(res=>{
+							console.log(res);
+							uni.navigateTo({
+								url:'/pages/improve/improve'
+							}),
+							uni.showToast({
+								title:'注册成功'
+							})
+						
+					}).catch(err=>{
+						console.log(err);
+					})
+				}
+				else{
+					uni.showToast({
+						title:'两次密码不同',
+						icon:'error'
+					})
+				}
+				
 			}
 		}
 	}

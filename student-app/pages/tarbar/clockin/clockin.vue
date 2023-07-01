@@ -18,52 +18,68 @@
 				<view class="temp4"></view>
 				<view class="clockin-text">
 					<text class="inner-text">学习总时长：</text>
-					<text class="inner-data">{{studytime}}h</text>
+					<text class="inner-data">{{studytime}}m</text>
 				</view>
 			</view>
 			<view class="other">
 				<view class="ranking">
 					<view class="icon">
 						<img src="../../../static/image/165ranking.png" style="height: 100%;width: 100%;"
-							@click="navTo('/pages/tarbar/clockin/ranking')"></img>
+							@click="navTo('/pages/tarbar/clockin/ranking');alarm()"></img>
 					</view>
 				</view>
 				<view class="schedule">
 					<view class="icon">
 						<img src="../../../static/image/schedule.png" style="height: 100%;width: 100%;"
-							@click="navTo('/pages/tarbar/clockin/schedule')"></img>
+							@click="navTo('/pages/tarbar/clockin/schedule');alarm()"></img>
 					</view>
 				</view>
 				<view class="record">
 					<view class="icon">
 						<img src="../../../static/image/records.png" style="height: 100%;width: 100%;"
-							@click="navTo('/pages/tarbar/clockin/record')"></img>
+							@click="navTo('/pages/tarbar/clockin/record');alarm()"></img>
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="temp2"></view>
 		<view class="begin">
-			<view class="begin-button"> <button style="width: 100%;"
-					@click="navTo('/pages/tarbar/clockin/beginstudy')">进入学习</button></view>
+			<view class="begin-button"> <button style="width: 100%;background-color: #49bdfb;"
+					@click="navTo('/pages/tarbar/clockin/beginstudy');alarm()">进入学习</button></view>
 
 		</view>
 	</view>
 </template>
 
 <script>
+	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
 				studytime: 0,
 			}
 		},
+		computed:{
+			...mapState({
+				loginStatus:state=>state.user.loginStatus
+			})
+		},
+
 		methods: {
+			alarm(){
+				if (!this.loginStatus) {
+					uni.showToast({
+						title:'请先进行登录',
+						icon:'error',
+						duration:1500
+					})
+				}
+			},
 			navTo(url) {
 				console.log('跳转路径', url);
-				/*if (!this.hasLogin) {
+				if (!this.loginStatus) {
 					url = '/pages/login/login';
-				}*/
+				}
 				uni.navigateTo({
 					url
 				});

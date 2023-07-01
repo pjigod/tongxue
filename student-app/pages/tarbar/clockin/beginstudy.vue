@@ -57,7 +57,7 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -92,8 +92,13 @@
 				finalminute:0,
 				data:'数据结构',
 				dataStatus:false,
-				timeStatus:false
+				timeStatus:false,
 			}
+		},
+		computed:{
+			...mapState({
+				accountId: state => state.user.accountId,
+			})
 		},
 		methods: {
 			bindMultiPickerColumnChange: function(e) {
@@ -137,13 +142,14 @@
 					url:'http://121.43.48.56/user/clockin',
 					method:'GET',
 					data:{
-						AccountID:111111,
+						AccountId:this.accountId,
 						ClockInhour:this.finalhour,
 						Content:this.data,
 						ClockInmin:this.finalminute
 						
 					}
-				})
+				});
+				console.log(this.accountId);
 			},
 			beginstudy(){
 				if(this.dataStatus==true&&this.timeStatus==true){

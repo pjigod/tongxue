@@ -10,7 +10,7 @@
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" :value="AccountId"/>
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" v-model="AccountId" />
 				</view>
 				<view class="right-icon1">
 					<view class="registertext"><text style="color: gray;"
@@ -21,7 +21,7 @@
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" :value="Password"/>
+					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" v-model="Password" />
 				</view>
 				<view class="right-icon2">
 					<view class="forgettext"><text style="color: gray;"
@@ -64,15 +64,26 @@
 </template>
 
 <script>
+	import {
+		mapMutations,
+		mapState,
+	} from 'vuex'
 	export default {
 		data() {
 			return {
 				ischecked: false,
-				AccountId:'111111',
-				Password:'111111'
+				AccountId: '111111',
+				Password: '111111'
 			}
 		},
+		computed: {
+			...mapState({
+				loginStatus: state => state.user.loginStatus,
+				accountId: state => state.user.accountId,
+			})
+		},
 		methods: {
+			...mapMutations(['hasLogin', 'setAccountId']),
 			navTo(url) {
 				console.log('跳转路径', url);
 				/*if (!this.hasLogin) {
@@ -85,22 +96,44 @@
 			},
 			toLogin() {
 				if (this.ischecked) {
-					uni.request({
-						url:'http://121.43.48.56/user/login',
-						method:'GET',
-						data:{
-							AccountId:this.AccountId,
-							Password:this.Password
-						},
-						success() {
-							console.log(true);
+					this.$request({
+						url: '/user/login',
+						data: {
+							AccountId: this.AccountId,
+							Password: this.Password
 						}
+					}).then(res => {
+						console.log(res);
+						if (res === true) {
+							this.hasLogin(res);
+							this.setAccountId(this.AccountId);
+							uni.showToast({
+								title: '登陆成功'
+							})
+							const pages = getCurrentPages();
+
+							console.log("跳转首页")
+							// 跳转首页
+							uni.switchTab({
+								url: '/pages/tarbar/forum/forum'
+							});
+
+							this.getUserInfo(this.accountId);
+							// this.getImgURL(this.accountId);
+						}
+						else{
+							uni.showToast({
+								title:'登录失败，请检查用户名和密码是否正确',
+								icon:'none'
+							})
+						}
+					}).catch(err => {
+						console.log(err);
+						// uni.showToast({
+						// 	title:'密码错误',
+						// 	icon:'error'
+						// })
 					})
-					console.log(this.AccountId);
-					console.log(this.Password);
-					// uni.switchTab({
-					// 	url: "/pages/tarbar/forum/forum"
-					// })
 
 				} else {
 					uni.showToast({
@@ -109,6 +142,35 @@
 						icon: 'error'
 					})
 				}
+			},
+			getImgURL(accountID) {
+				this.$request({
+					url: '/user/avatar',
+					data: {
+						AccountId: accountID
+					}
+				}).then(res => {
+					uni.setStorageSync('photo', res);
+
+					//uni.setStorageSync('token',res.token);
+				}).catch(err => {
+					console.log(err);
+				});
+			},
+			getUserInfo(accountID) {
+				this.$request({
+					url: '/user/info',
+					data: {
+						AccountId: accountID
+					}
+				}).then(res => {
+					uni.setStorageSync('nickName', res.nickName);
+					uni.setStorageSync('email', res.email);
+
+					//uni.setStorageSync('token',res.token);
+				}).catch(err => {
+					console.log(err);
+				});
 			},
 			change() {
 				if (!this.ischecked) {

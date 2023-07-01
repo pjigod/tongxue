@@ -1,6 +1,15 @@
 <template>
 	<view class="container">
 		<view class="myItems">
+			<view class="myfriends" @click="navTo('/pages/tarbar/my/set/alterphone')">
+				<view class="collection-inner-icon"></view>
+				<view class="friends-text">
+					<text style="font-size: 35rpx;">修改昵称</text>
+				</view>
+				<view class="friends-nextto">
+					<img src="../../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
+				</view>
+			</view>
 			<view class="myCollection" @click="navTo('/pages/tarbar/my/set/alterpassword')">
 				<view class="collection-inner-icon"></view>
 				<view class="collection-text">
@@ -34,15 +43,7 @@
 			</view>
 			<view class="ssmalltemp"></view>
 			<!-- 我的好友 -->
-			<view class="myfriends" @click="navTo('/pages/tarbar/my/set/alterphone')">
-				<view class="collection-inner-icon"></view>
-				<view class="friends-text">
-					<text style="font-size: 35rpx;">修改手机号</text>
-				</view>
-				<view class="friends-nextto">
-					<img src="../../../../static/image/arrow.png" style="height: 100%;width: 100%;"></img>
-				</view>
-			</view>
+			
 			<view class="smalltemp"></view>
 			<!-- 我的设置 -->
 			<view class="set" @click="navTo('/pages/tarbar/my/set/abouttongxue')">

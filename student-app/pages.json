@@ -1,5 +1,6 @@
 {
-	"pages": [{
+	"pages": [
+	{
 			"path": "pages/tarbar/forum/forum",
 			"style": {
 				"navigationBarTitleText": "",
@@ -14,7 +15,16 @@
 				"navigationBarBackgroundColor": "#25d3fa"
 			}
 
-		}, {
+		}, 
+		{
+		    "path" : "pages/improve/improve",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "",
@@ -186,6 +196,7 @@
             }
             
         }
+        
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

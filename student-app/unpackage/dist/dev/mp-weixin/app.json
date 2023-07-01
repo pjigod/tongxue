@@ -2,6 +2,7 @@
   "pages": [
     "pages/tarbar/forum/forum",
     "pages/tarbar/clockin/clockin",
+    "pages/improve/improve",
     "pages/login/login",
     "pages/tarbar/my/my",
     "pages/tarbar/my/myCollection",

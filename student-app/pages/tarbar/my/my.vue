@@ -5,12 +5,12 @@
 			<!-- 用户信息 -->
 			<view class="userImage">
 				<view class="inner_image">
-					<img @click="navTo('/pages/login/login')" src="../../../static/image/user.png"
+					<img @click="loginStatus?navTo('/pages/tarbar/my/set/set'):navTo('/pages/login/login')" :src=photo
 						style="height: 100%;width: 100%;"></img>
 				</view>
 			</view>
 			<view class="userName">
-				<text>点击头像登录</text>
+				<text>{{loginStatus?nickname:'点击头像登录'}}</text>
 			</view>
 			<view class="userTitle">
 				<text>摆烂大王</text>
@@ -21,7 +21,7 @@
 		</view>
 		<view class="myItems">
 			<!-- 我的收藏 -->
-			<view class="myCollection" @click="navTo('/pages/tarbar/my/myCollection')">
+			<view class="myCollection" @click="navTo('/pages/tarbar/my/myCollection');alarm()">
 				<view class="collection-image">
 					<view class="collection-inner-icon">
 						<img src="../../../static/image/star.png" style="height: 100%;width: 100%;"></img>
@@ -36,7 +36,7 @@
 			</view>
 			<view class="ssmalltemp"></view>
 			<!-- 我的点赞 -->
-			<view class="myLike" @click="navTo('/pages/tarbar/my/mylike')">
+			<view class="myLike" @click="navTo('/pages/tarbar/my/mylike');alarm()">
 				<view class="like-image">
 					<view class="like-inner-icon">
 						<img src="../../../static/image/header.png" style="height: 100%;width: 100%;"></img>
@@ -51,7 +51,7 @@
 			</view>
 			<view class="ssmalltemp"></view>
 			<!-- 我的关注 -->
-			<view class="mycare" @click="navTo('/pages/tarbar/my/mycare')">
+			<view class="mycare" @click="navTo('/pages/tarbar/my/mycare');alarm()">
 				<view class="care-image">
 					<view class="care-inner-icon">
 						<img src="../../../static/image/mycare.png" style="height: 100%;width: 100%;"></img>
@@ -66,7 +66,7 @@
 			</view>
 			<view class="ssmalltemp"></view>
 			<!-- 我的好友 -->
-			<view class="myfriends" @click="navTo('/pages/tarbar/my/myfriends/myfriends')">
+			<view class="myfriends" @click="navTo('/pages/tarbar/my/myfriends/myfriends');alarm()">
 				<view class="friends-image">
 					<view class="friends-inner-icon">
 						<img src="../../../static/image/friends.png" style="height: 100%;width: 100%;"></img>
@@ -81,7 +81,7 @@
 			</view>
 			<view class="smalltemp"></view>
 			<!-- 我的设置 -->
-			<view class="set" @click="navTo('/pages/tarbar/my/set/set')">
+			<view class="set" @click="navTo('/pages/tarbar/my/set/set');alarm()">
 				<view class="set-image">
 					<view class="set-inner-icon">
 						<img src="../../../static/image/set.png" style="height: 100%;width: 100%;"></img>
@@ -103,23 +103,57 @@
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	export default {
 		data() {
 			return {
-
+				nickname: '',
+				photo: '../../../static/image/user.png',
 			}
 		},
+		computed: {
+			...mapState({
+				loginStatus: state => state.user.loginStatus
+			}),
+
+		},
+		onShow(){
+			let name=uni.getStorageSync('nickName');
+			this.nickname=name;
+		},
+		// lifetimes: {
+		// 	ready() {
+		// 		this.setData({
+		// 			nickname: uni.getStorageSync("nickName"),
+		// 		});
+		// 		console.log(nickname);
+		// 	},
+		// },
 		methods: {
+			...mapMutations(['hasLogout']),
+			alarm() {
+				if (!this.loginStatus) {
+					uni.showToast({
+						title: '请先进行登录',
+						icon: 'error',
+					})
+					console.log(this.loginStatus)
+				}
+			},
 			navTo(url) {
 				console.log('跳转路径', url);
-				/*if (!this.hasLogin) {
+				if (!this.loginStatus) {
 					url = '/pages/login/login';
-				}*/
+				}
 				uni.navigateTo({
 					url
 				});
 			},
 			exit() {
+				this.hasLogout();
 				uni.showToast({
 					title: '退出登录',
 					duration: 1500,
