@@ -41,6 +41,7 @@ public class AdminController {
     }
     @RequestMapping("/admin/all")
     public List<accounttb> displayalluser(){
+        System.out.println("Adminqueryall");
         return mapper.findalluser();
     }
     @RequestMapping("/admin/all/delete")
@@ -49,6 +50,7 @@ public class AdminController {
     }
     @RequestMapping("/admin/all/alter")
     public accounttb alteruser(@RequestParam("AccountId") String AccountId,@RequestParam(value = "Password",required = false) String Password,@RequestParam(value = "EMail",required = false)String EMail,@RequestParam(value = "NickName",required = false)String NickName,@RequestParam(value = "photo",required = false)MultipartFile photo,HttpServletRequest request) throws IOException{
+        System.out.println(AccountId+Password+EMail+NickName);
         if(photo!=null) fservice.uploadAvator(AccountId,photo,request);
         if(EMail!=null)mapper.updateEmail(AccountId,EMail);
         if(Password!=null)mapper.updatePassword(AccountId,Password);
@@ -75,6 +77,5 @@ public class AdminController {
     {
         if(mapper.insertuser(AccountId,Password,EMail,NickName))return mapper.Userinfo(AccountId);
         else return null;
-
     }
 }

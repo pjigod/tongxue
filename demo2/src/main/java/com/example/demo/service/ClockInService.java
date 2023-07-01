@@ -19,7 +19,8 @@ public class ClockInService implements IClockInService{
     ClockInMapper clockInMapper;
     @Synchronized
     public boolean clockin(String AccountId,Integer ClockInTime,  String Content){
-
-        return clockInMapper.clockin(ClockInTime,LocalDateTime.now(),Content)&&belongMapper.insertbelong(AccountId);
+        boolean ans= clockInMapper.clockin(ClockInTime,LocalDateTime.now(),Content);
+        ans=belongMapper.insertbelong(AccountId);
+        return ans;
     }
 }

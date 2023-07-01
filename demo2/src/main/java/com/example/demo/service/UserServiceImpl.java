@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean register(String AccountId, String Password) {
-        mapper.register(AccountId,Password);
+    public boolean register(String AccountId, String Password,String EMail) {
+        mapper.register(AccountId,Password,EMail);
         return true;
     }
     @Override

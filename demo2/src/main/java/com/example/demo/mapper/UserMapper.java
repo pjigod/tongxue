@@ -12,8 +12,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<accounttb> {
     @Select("Select * from accounttb where AccountId=#{AccountId} and Password=#{Password}")
     accounttb login(@Param("AccountId")String AccountId,@Param("Password") String Password);
-    @Insert("Insert into accounttb values(#{AccountId},null,null,#{Password},null)")
-    boolean register(@Param("AccountId")String AccountId,@Param("Password") String Password);
+    @Insert("Insert into accounttb values(#{AccountId},null,#{EMail},#{Password},null)")
+    boolean register(@Param("AccountId")String AccountId,@Param("Password") String Password,@Param("EMail")String EMail);
     @Update("Update accounttb set NickName=#{NickName} where AccountId=#{AccountId}")
     int updateNickname(@Param("AccountId")String AccountId,@Param("NickName")String NickName);
     @Update("Update accounttb set Password=#{Password} where AccountId=#{AccountId}")
@@ -26,7 +26,15 @@ public interface UserMapper extends BaseMapper<accounttb> {
     List<accounttb> findalluser();
     @Select("select * from accounttb where AccountId=#{AccountId}")
     accounttb Userinfo(@Param("AccountId") String AccountId);
-    @Delete("Delete from accounttb where AccountId=#{AccountId}")
+    @Delete("DELETE FROM team_account where AccountId=#{AccountId}"+
+            "DELETE FROM concerntb WHERE AccountId=#{AccountId};"+
+            "DELETE FROM goodtb WHERE AccountId=#{AccountId};"+
+            "DELETE FROM collectiontb WHERE AccountId=#{AccountId};"+
+            "DELETE FROM commentsdtb WHERE AccountId=#{AccountId};"+
+            "DELETE FROM wishtb WHERE AccountId =#{AccountId};"+
+            "DELETE FROM belongtb WHERE AccountId =#{AccountId};" +
+            "Delete from accounttb where AccountId=#{AccountId};" +
+            "Delete from clockintb where AccountId=#{AccountId};")
     boolean DeleteByID(@Param("AccountId") String AccountId);
     @Select("SELECT accounttb.AccountId,accounttb.NickName, SUM(clockintb.ClockInTime) AS totaltime " +
             "FROM accounttb " +

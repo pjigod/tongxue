@@ -3,6 +3,7 @@ import com.example.demo.entity.accounttb;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.FileUploadService;
+import com.example.demo.service.MailService;
 import com.example.demo.service.PhotoService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @RestController
@@ -25,6 +27,8 @@ public class UserController {
     private PhotoService photoService;
     @Autowired
     private UserMapper mapper;
+    @Autowired
+    private MailService mailService;
     @RequestMapping("all")
     public List<accounttb> getAllUser(){
         List<accounttb> allUser=service.findalluser();
@@ -38,10 +42,13 @@ public class UserController {
     }
 
     @RequestMapping("register")
-    public boolean register(@RequestParam("AccountId") String AccountId,@RequestParam("Password") String Password){
+    public boolean register(@RequestParam("AccountId") String AccountId,@RequestParam("Password") String Password,@RequestParam("EMail")String EMail,@RequestParam("Code")String Code){
         System.out.println(AccountId);
         System.out.println(Password);
-        return service.register(AccountId,Password);
+        System.out.println(EMail);
+        System.out.println(Code);
+        if(!mailService.verify(EMail,Code)) return false;
+        return service.register(AccountId,Password,EMail);
     }
     @RequestMapping("info")
     public accounttb getuserinfo(@RequestParam("AccountId")String AccountId){
@@ -83,7 +90,9 @@ public class UserController {
 //    }
     @RequestMapping("totaltime")
     public float gettotaltime(@RequestParam("AccountId")String AccountId) {
-        float totaltime = (float) (Math.round((float) mapper.gettotaltime(AccountId) * 10) / 10);
+        float totaltime = (float)mapper.gettotaltime(AccountId) / 60f;
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        totaltime = Float.parseFloat(decimalFormat.format(totaltime));
         return totaltime;
     }
 }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 public interface UserService {
     boolean login(String AccountId, String Password, HttpServletRequest request);
-    boolean register(String AccountId,String Password);
+    boolean register(String AccountId,String Password,String EMail);
     public List<accounttb> findalluser();
      List<Rank> getrank();
     accounttb Userinfo(String id);
