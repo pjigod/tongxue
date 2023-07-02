@@ -1,0 +1,1 @@
+<view class="container"><view class="ranking">{{ranking+1}}</view><view class="accountId">{{accountId}}</view><view class="nickName">{{nickName}}</view><view class="totaltime">{{totaltime}}</view></view>

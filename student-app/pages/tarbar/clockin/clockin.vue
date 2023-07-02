@@ -18,7 +18,7 @@
 				<view class="temp4"></view>
 				<view class="clockin-text">
 					<text class="inner-text">学习总时长：</text>
-					<text class="inner-data">{{studytime}}m</text>
+					<text class="inner-data">{{studytime}}h</text>
 				</view>
 			</view>
 			<view class="other">
@@ -61,10 +61,25 @@
 		},
 		computed:{
 			...mapState({
-				loginStatus:state=>state.user.loginStatus
+				loginStatus:state=>state.user.loginStatus,
+				accountId:state=>state.user.accountId
 			})
 		},
-
+		onShow() {
+			if(this.loginStatus===true){
+				this.$request({
+					url:'/user/totaltime',
+					methods:'GET',
+					data:{
+						AccountId:this.accountId
+					}
+				}).then(res=>{
+					this.studytime=res;
+				}).catch(err=>{
+					console.log(err);
+				})
+			}
+		},
 		methods: {
 			alarm(){
 				if (!this.loginStatus) {

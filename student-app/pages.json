@@ -1,6 +1,5 @@
 {
-	"pages": [
-	{
+	"pages": [ {
 			"path": "pages/tarbar/forum/forum",
 			"style": {
 				"navigationBarTitleText": "",
@@ -8,6 +7,13 @@
 			}
 
 		}, {
+			"path": "pages/emailConfirm/emailConfirm",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		},{
 			"path": "pages/tarbar/clockin/clockin",
 			"style": {
 				"navigationBarTitleText": "",
@@ -15,16 +21,15 @@
 				"navigationBarBackgroundColor": "#25d3fa"
 			}
 
-		}, 
+		},
 		{
-		    "path" : "pages/improve/improve",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},{
+			"path": "pages/improve/improve",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "",
@@ -177,27 +182,24 @@
 				"navigationBarBackgroundColor": "#25d3fa"
 			}
 
+		}, {
+			"path": "pages/searchlist/searchlist",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "components/common/post",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/searchlist/searchlist",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "components/common/post",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        
-    ],
+
+
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

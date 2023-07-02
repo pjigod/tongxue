@@ -1,8 +1,4 @@
 <template>
-<!-- 	<view class="post-list"> -->
-		<!-- 帖子列表组件 -->
-	<!-- <post  :dataList='postList' ></post>
-	</view> -->
 	<view>
 	<post
 	v-for="(Post,index) in postList"

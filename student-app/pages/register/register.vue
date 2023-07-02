@@ -10,21 +10,21 @@
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" v-model="AccountId"/>
+					<input type="text" style="border: none;height: 100%;" placeholder="输入用户名(数字)" v-model="AccountId" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="password" style="border: none;height: 100%;" placeholder="请输入密码" v-model="Password"/>
+					<input type="password" style="border: none;height: 100%;" placeholder="输入密码" v-model="Password" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext3">
 				<view class="temp7"></view>
 				<view class="left-input3">
-					<input type="password" style="border: none;height: 100%;" placeholder="请确认密码" v-model="Confirm"/>
+					<input type="password" style="border: none;height: 100%;" placeholder="确认密码" v-model="Confirm" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -32,7 +32,7 @@
 		<view class="temp3"></view>
 		<view class="loginbutton">
 			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:darkblue;"
-				@click="toRegister">注册</button>
+				@click="checkInput();toRegister()">下一步</button>
 		</view>
 		<view class="temp4"></view>
 		<view class="confirm">
@@ -48,10 +48,11 @@
 	export default {
 		data() {
 			return {
-				AccountId:'',
-				Password:'',
-				Confirm:'',
-				isConfirmed:false
+				AccountId: '',
+				Password: '',
+				Confirm: '',
+				isConfirmed: false,
+				isChecked: false
 			}
 		},
 		methods: {
@@ -65,36 +66,51 @@
 				});
 
 			},
-			toRegister(){
-				if(this.Password===this.Confirm){
-					this.isConfirmed=true;
-					this.$request({
-						url:'/user/register',
-						method:'GET',
-						data:{
-							AccountId:this.AccountId,
-							Password:this.Password
-						}
-					}).then(res=>{
-							console.log(res);
-							uni.navigateTo({
-								url:'/pages/improve/improve'
-							}),
-							uni.showToast({
-								title:'注册成功'
-							})
-						
-					}).catch(err=>{
-						console.log(err);
-					})
-				}
-				else{
+			checkInput() {
+				// 判断输入值是否为数字
+				if (!this.AccountId || !/^[0-9]+$/.test(this.AccountId)) {
 					uni.showToast({
-						title:'两次密码不同',
-						icon:'error'
-					})
+						title: '用户名非全数字',
+						icon: 'error'
+					});
+				} else {
+					// 如果不是数字，弹出警告框并提醒重新输入
+
+					this.isChecked = true;
+					console.log(this.isChecked);
 				}
-				
+			},
+			toRegister() {
+				if (this.isChecked === true) {
+					if (this.Password === this.Confirm) {
+						this.navTo('/pages/emailConfirm/emailConfirm?AccountId='+this.AccountId+'&Password='+this.Password)
+						// this.$request({
+						// 	url: '/user/register',
+						// 	method: 'GET',
+						// 	data: {
+						// 		AccountId: this.AccountId,
+						// 		Password: this.Password
+						// 	}
+						// }).then(res => {
+						// 	console.log(res);
+						// 	uni.navigateTo({
+						// 			url: '/pages/improve/improve'
+						// 		}),
+						// 		uni.showToast({
+						// 			title: '注册成功'
+						// 		})
+
+						// }).catch(err => {
+						// 	console.log(err);
+						// })
+					} else {
+						uni.showToast({
+							title: '两次密码不同',
+							icon: 'error'
+						})
+					}
+
+				}
 			}
 		}
 	}

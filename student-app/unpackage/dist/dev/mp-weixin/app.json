@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/tarbar/forum/forum",
+    "pages/emailConfirm/emailConfirm",
     "pages/tarbar/clockin/clockin",
     "pages/improve/improve",
     "pages/login/login",

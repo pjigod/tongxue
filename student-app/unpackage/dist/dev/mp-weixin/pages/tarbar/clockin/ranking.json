@@ -2,6 +2,6 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "post-list": "/components/common/postList"
+    "rankitem": "/components/common/rankitem"
   }
 }
