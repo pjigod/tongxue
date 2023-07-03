@@ -45,8 +45,17 @@ public class AdminController {
         return mapper.findalluser();
     }
     @RequestMapping("/admin/all/delete")
-    public boolean deleteuser(String AccountId){
-        return mapper.DeleteByID(AccountId);
+    public String deleteuser(String AccountId){
+        adminLogMapper.Deleteteam_accountByID(AccountId);
+        adminLogMapper.DeleteconcernByID(AccountId);
+        adminLogMapper.DeletegoodtbByID(AccountId);
+        adminLogMapper.DeletecollectiontbByID(AccountId);
+        adminLogMapper.DeletecommentsdtbByID(AccountId);
+        adminLogMapper.DeletewishtbByID(AccountId);
+        adminLogMapper.DeleteclockintbByID(AccountId);
+        adminLogMapper.DeletebelongtbByID(AccountId);
+        adminLogMapper.DeleteaccounttbByID(AccountId);
+        return "删除成功";
     }
     @RequestMapping("/admin/all/alter")
     public accounttb alteruser(@RequestParam("AccountId") String AccountId,@RequestParam(value = "Password",required = false) String Password,@RequestParam(value = "EMail",required = false)String EMail,@RequestParam(value = "NickName",required = false)String NickName,@RequestParam(value = "photo",required = false)MultipartFile photo,HttpServletRequest request) throws IOException{

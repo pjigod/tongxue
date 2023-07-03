@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+import com.example.demo.entity.ClockIn;
 import com.example.demo.entity.accounttb;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.mapper.UserMapper;
@@ -94,5 +95,9 @@ public class UserController {
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
         totaltime = Float.parseFloat(decimalFormat.format(totaltime));
         return totaltime;
+    }
+    @RequestMapping("clockinlog")
+    public ClockIn getclockinlog(@RequestParam("AccountId")String AccountId){
+        return mapper.getclockinlog(AccountId);
     }
 }

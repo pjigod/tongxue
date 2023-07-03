@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.entity.ClockIn;
 import com.example.demo.entity.Rank;
 import com.example.demo.entity.accounttb;
 import org.apache.ibatis.annotations.*;
@@ -26,14 +27,14 @@ public interface UserMapper extends BaseMapper<accounttb> {
     List<accounttb> findalluser();
     @Select("select * from accounttb where AccountId=#{AccountId}")
     accounttb Userinfo(@Param("AccountId") String AccountId);
-    @Delete("DELETE FROM team_account where AccountId=#{AccountId}"+
-            "DELETE FROM concerntb WHERE AccountId=#{AccountId};"+
-            "DELETE FROM goodtb WHERE AccountId=#{AccountId};"+
-            "DELETE FROM collectiontb WHERE AccountId=#{AccountId};"+
-            "DELETE FROM commentsdtb WHERE AccountId=#{AccountId};"+
-            "DELETE FROM wishtb WHERE AccountId =#{AccountId};"+
-            "DELETE FROM belongtb WHERE AccountId =#{AccountId};" +
-            "Delete from accounttb where AccountId=#{AccountId};" +
+    @Delete("DELETE FROM team_account where AccountId=#{AccountId};\n"+
+            "DELETE FROM concerntb WHERE AccountId=#{AccountId};\n"+
+            "DELETE FROM goodtb WHERE AccountId=#{AccountId};\n"+
+            "DELETE FROM collectiontb WHERE AccountId=#{AccountId};\n"+
+            "DELETE FROM commentsdtb WHERE AccountId=#{AccountId};\n"+
+            "DELETE FROM wishtb WHERE AccountId =#{AccountId};\n"+
+            "DELETE FROM belongtb WHERE AccountId =#{AccountId};\n" +
+            "Delete from accounttb where AccountId=#{AccountId};\n" +
             "Delete from clockintb where AccountId=#{AccountId};")
     boolean DeleteByID(@Param("AccountId") String AccountId);
     @Select("SELECT accounttb.AccountId,accounttb.NickName, SUM(clockintb.ClockInTime) AS totaltime " +
@@ -44,8 +45,10 @@ public interface UserMapper extends BaseMapper<accounttb> {
             "ORDER BY total_time DESC " +
             "LIMIT 10;")
     List<Rank> getrank();
-    @Select("select SUM(clockintb.ClockInTime) AS totaltime from  belongtb  inner join clockintb on belongtb.ClockInId = clockintb.ClockInId and belongtb.AccountId=#{AccountId}")
+    @Select("select COALESCE(SUM(clockintb.ClockInTime),0) AS totaltime from  belongtb  inner join clockintb on belongtb.ClockInId = clockintb.ClockInId and belongtb.AccountId=#{AccountId}")
     int gettotaltime(@Param("AccountId") String AccountId);
+    @Select("Select * from belongtb inner joln clockintb on belongtb.Clockintb.ClockInId and belongtb.AccountId=#{AccountId}")
+    ClockIn getclockinlog(@Param("AccountId")String AccountId);
     @Select("select count(*) from accounttb")
     int getUserCount();
     @Insert("Insert into accounttb values(#{AccountId},#{NickName},#{EMail},#{Password},null)")
