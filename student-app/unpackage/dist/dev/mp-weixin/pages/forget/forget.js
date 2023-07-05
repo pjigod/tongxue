@@ -179,17 +179,23 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
+// import {
+// 	mapMutations,
+// 	mapState,
+// } from 'vuex'
 var _default = {
   data: function data() {
-    return {};
+    return {
+      accountId: '',
+      code: ''
+    };
   },
+  // computed: {
+  // 	...mapState({
+  // 		loginStatus: state => state.user.loginStatus,
+  // 		accountId: state => state.user.accountId,
+  // 	})
+  // },
   methods: {
     navTo: function navTo(url) {
       console.log('跳转路径', url);
@@ -200,8 +206,46 @@ var _default = {
         url: url
       });
     },
+    sendconfirm: function sendconfirm() {
+      this.$request({
+        url: '/user/send',
+        methods: 'GET',
+        data: {
+          AccountId: this.accountId
+        }
+      }).then(function (res) {
+        console.log(res);
+        uni.showToast({
+          title: '验证码已发送'
+        });
+      }).then(function (err) {
+        console.log(err);
+      });
+    },
     toconfirm: function toconfirm() {
-      this.navTo('/pages/alter/alter');
+      var _this = this;
+      this.$request({
+        url: '/user/verify',
+        methods: 'GET',
+        data: {
+          AccountId: this.accountId,
+          Code: this.code
+        }
+      }).then(function (res) {
+        console.log(res);
+        if (res) {
+          uni.navigateTo({
+            url: '/pages/alter/alter?AccountId=' + _this.accountId
+          });
+        } else {
+          uni.showToast({
+            title: '验证码错误',
+            icon: 'error'
+          });
+        }
+      }).then(function (err) {
+        // console.log(err);
+      });
     }
   }
 };

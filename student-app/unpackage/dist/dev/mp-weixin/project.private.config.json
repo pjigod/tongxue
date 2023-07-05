@@ -16,7 +16,21 @@
                 },
                 {
                     "name": "",
-                    "pathName": "pages/search/search",
+                    "pathName": "pages/tarbar/clockin/beginstudy",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/improve/improve",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/postPublish/postPublish",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

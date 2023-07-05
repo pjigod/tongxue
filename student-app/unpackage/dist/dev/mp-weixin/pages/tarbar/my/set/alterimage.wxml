@@ -1,1 +1,1 @@
-<view>修改头像</view>
+<view class="container"><view class="temp"></view><view class="altertext"><text style="font-size:50rpx;">修改头像</text></view><view class="temp"></view><view data-event-opts="{{[['tap',[['toalterImage']]]]}}" class="alterImage" bindtap="__e"><image style="width:350rpx;height:350rpx;border-radius:50%;" src="{{photo}}"></image></view></view>

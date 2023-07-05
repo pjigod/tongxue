@@ -10,9 +10,9 @@
 			<view class="content-checkbox">
 				<view class="data-text"><text style="font-size: 35rpx;">当前选择为：</text></view>
 				<view class="data-picker">
-					<picker :range="array" range-key="name" value="1" @change="bindPickerChange"
+					<picker :range="array" range-key="name"  @change="bindPickerChange"
 						style="font-size: 35rpx;">
-						{{array[index].name}}
+						{{data}}
 					</picker>
 				</view>
 
@@ -64,7 +64,7 @@ import {mapState} from 'vuex'
 				multiArray: [
 
 					['0', '1', '2', '3', '4', '5'],
-					['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15',
+					[ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15',
 						'16',
 						'17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32',
 						'33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48',
@@ -73,7 +73,7 @@ import {mapState} from 'vuex'
 				],
 				multiIndex: [0, 0],
 				array: [{
-					name: '请选择'
+					name: 'springboot'
 				}, {
 					name: 'web'
 				}, {
@@ -90,7 +90,7 @@ import {mapState} from 'vuex'
 				hour: 0,
 				finalhour:0,
 				finalminute:0,
-				data:'数据结构',
+				data:'请选择',
 				dataStatus:false,
 				timeStatus:false,
 			}
@@ -121,18 +121,10 @@ import {mapState} from 'vuex'
 
 			},
 			bindPickerChange(e) {
-				if (e.detail.value == 0) {
-					this.dataStatus=false;
-					uni.showToast({
-						duration: (1500),
-						icon: 'error',
-						title: "请重新选择"
-					})
-				} else{
 					this.index = e.detail.value;
 					this.data=this.array[e.detail.value].name;
 					this.dataStatus=true
-					}
+					
 			},
 			bindTimeChange(e) {
 				this.time = e.detail.value;
@@ -182,6 +174,7 @@ import {mapState} from 'vuex'
 			},
 			startCountDown() {
 				// 启动计时器
+				this.minute--;
 				this.timer = setInterval(() => {
 					
 						if(this.minute>=1){
@@ -192,13 +185,14 @@ import {mapState} from 'vuex'
 							this.minute=59;
 						}
 						else{
-							clearInterval(this.timer);
+							
 							uni.showToast({
 								title:'本次打卡成功',
 						
 							})
 							console.log(this.finalhour);
 							console.log(this.finalminute);
+							clearInterval(this.timer);
 							this.toSubmit();
 							// 到时候传到后端
 						}
@@ -207,7 +201,7 @@ import {mapState} from 'vuex'
 						// console.log(this.finalhour);
 						// console.log(this.finalminute);
 
-				}, 1000);
+				}, 5000);
 			},
 			endCountDown(){
 				clearInterval(this.timer);

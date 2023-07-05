@@ -17,7 +17,7 @@
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入邮箱" v-model="email"/>
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入邮箱" v-model="email" />
 				</view>
 				<view class="right-icon1">
 					<view class="registertext"><text style="color: gray;" @click="sendconfirm">发送验证码</text></view>
@@ -51,18 +51,18 @@
 	export default {
 		data() {
 			return {
-			AccountId:'',
-			Password:'',
-			email:'',
-			confirmCode:''
+				AccountId: '',
+				Password: '',
+				email: '',
+				confirmCode: ''
 			}
 		},
 		onLoad(options) {
 			// console.log(options.AccountId) // 输出 123
 			// console.log(options.Password) // 输出 uni-app
-			this.AccountId=options.AccountId;
-			this.Password=options.Password;
-			console.log(this.AccountId) 
+			this.AccountId = options.AccountId;
+			this.Password = options.Password;
+			console.log(this.AccountId)
 		},
 		computed: {
 			...mapState({
@@ -82,51 +82,50 @@
 				});
 
 			},
-			sendconfirm(){
-			this.$request({
-				url:'/email',
-				methods:'GET',
-				data:{
-					EMail:this.email
-				}
-				
-			}).then(res=>{
-				console.log(res);
-			}).then(err=>{
-				console.log(err);
-			})
+			sendconfirm() {
+				this.$request({
+					url: '/email',
+					methods: 'GET',
+					data: {
+						EMail: this.email
+					}
+
+				}).then(res => {
+					console.log(res);
+				}).then(err => {
+					console.log(err);
+				})
 			},
 			toconfirm() {
 				this.$request({
-					url:'/user/register',
-					methods:'GET',
-					data:{
-						AccountId:this.AccountId,
-						Password:this.Password,
-						EMail:this.email,
-						Code:this.confirmCode
-						
+					url: '/user/register',
+					methods: 'GET',
+					data: {
+						AccountId: this.AccountId,
+						Password: this.Password,
+						EMail: this.email,
+						Code: this.confirmCode
+
 					}
-				}).then(res=>{
-					if(res===true){
+				}).then(res => {
+					if (res === true) {
 						uni.showToast({
-							title:'注册成功'
-						}),
-						this.hasLogin(res);
+								title: '注册成功'
+							}),
+							this.hasLogin(res);
 						this.setAccountId(this.AccountId);
 						uni.setStorageSync('email', this.email);
 						this.navTo('/pages/improve/improve')
-					}
-					else {
+					} else {
 						uni.showToast({
-							title:'验证码错误',
-							icon:'error'
+							title: '验证码错误',
+							icon: 'error'
 						})
 					}
-				}).catch(err=>{
+				}).catch(err => {
 					uni.showToast({
-						title:'注册失败',
-						icon:'error'
+						title: '注册失败',
+						icon: 'error'
 					})
 				})
 			}

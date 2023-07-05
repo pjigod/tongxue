@@ -193,7 +193,6 @@ var _default = {
       AccountId: '',
       Password: '',
       Confirm: '',
-      isConfirmed: false,
       isChecked: false
     };
   },

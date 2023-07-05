@@ -1,1 +1,1 @@
-<view><text>record</text></view>
+<view class="container"><view class="items"><block wx:for="{{dataList}}" wx:for-item="recorditem" wx:for-index="index" wx:key="index"><recorditem vue-id="{{'33006941-1-'+index}}" content="{{recorditem.content}}" clockInDate="{{recorditem.clockInDate}}" clockInTime="{{recorditem.clockInTime}}" bind:__l="__l"></recorditem></block></view></view>

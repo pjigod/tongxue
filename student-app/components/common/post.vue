@@ -1,6 +1,21 @@
 <template>
-	<view class="post">
+	<view class="post" @click="toPostitem">
 		<!-- 单个帖子组件 -->
+		<view class="user">
+			<view class="user-image">
+				<image :src='userImg' style="width: 80rpx;height: 80rpx;border-radius: 50%;"></image>
+			</view>
+			<view class="userId">
+				<text style="font-size: 40rpx;">{{nickName}}</text>
+			</view>
+			<view class="postType">
+				<text style="background-color: #e1e1e1;font-size: 30rpx;
+		margin-left: 30rpx;
+		color: #636263;
+		border-radius: 26rpx;
+		height: 50rpx;		display: inline-block;">#{{type}}</text>
+			</view>
+		</view>
 		<view class="post-item">
 			<view class="post-title">
 				<text class="fti-style">{{posttitle}}</text>
@@ -51,17 +66,6 @@
 		</view>
 
 	</view>
-
-
-
-
-
-
-
-
-
-
-
 </template>
 
 <script>
@@ -73,13 +77,15 @@
 			}
 		},
 		props: [
-			'postid',
-			'imgUrl',
-			'posttitle',
-			'posttext',
-			'likeNum',
+			'pid',
+			'title',
+			'brief',
+			'goodNum',
 			'commentNum',
-			'collectionNum',
+			'collectNum',
+			'type',
+			'accountId',
+			'nickName'
 		],
 
 		methods: {
@@ -88,6 +94,11 @@
 			},
 			changeCollectionStatus() {
 				this.collectionStatus = !this.collectionStatus;
+			},
+			toPostitem(){
+				uni.navigateTo({
+					url:'/pages/postitem/postitem?pid='+this.postid
+				})
 			}
 
 		}
@@ -102,7 +113,7 @@
 
 	.temp3 {
 		width: 100%;
-		height: 50rpx;
+		height: 100rpx;
 	}
 
 	.post {
@@ -110,6 +121,27 @@
 
 	}
 
+	.user {
+		display: flex;
+		width: 100%;
+	}
+
+	.user-image {
+		display: flex;
+		width: 20%;
+		margin-left: 30rpx;
+	}
+
+	.postType {
+		display: flex;
+		justify-content: center;
+		margin-right: 0;
+	}
+
+	.userId {
+		display: flex;
+		width: 40%;
+	}
 
 	.post-image {
 		display: flex;
@@ -133,7 +165,7 @@
 	.post-operate {
 		display: flex;
 		flex-wrap: wrap;
-		height: 150rpx;
+		height: 120rpx;
 		width: 100%;
 	}
 

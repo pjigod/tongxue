@@ -8,14 +8,14 @@
 			<view class="inputtext1">
 				<view class="temp7"></view>
 				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入新密码" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入新密码" v-model="Password"/>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="text" style="border: none;height: 100%;" placeholder="请确认新密码" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请确认新密码" v-model="Confirm"/>
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -33,8 +33,16 @@
 	export default {
 		data() {
 			return {
-				ischecked: false
+				AccountId:'',
+				Password:'',
+				Confirm: '',
 			}
+		},
+		onLoad(options) {
+			// console.log(options.AccountId) // 输出 123
+			// console.log(options.Password) // 输出 uni-app
+			this.AccountId = options.AccountId;
+			console.log(this.AccountId)
 		},
 		methods: {
 			navTo(url) {
@@ -48,7 +56,32 @@
 
 			},
 			toconfirm(){
-				this.navTo('/pages/login/login')
+				if(this.Password===this.Confirm){
+					this.$request({
+						url: '/user/forget',
+						method: 'GET',
+						data: {
+							AccountId: this.AccountId,
+							Password: this.Password
+						}
+					}).then(res => {
+						uni.navigateTo({
+								url: '/pages/login/login'
+							}),
+							uni.showToast({
+								title: '修改成功'
+							})
+					
+					}).catch(err => {
+						console.log(err);
+					})
+				}
+				else {
+					uni.showToast({
+						title:'两次密码不同',
+						icon:'error'
+					})
+				}
 			}
 		}
 	}

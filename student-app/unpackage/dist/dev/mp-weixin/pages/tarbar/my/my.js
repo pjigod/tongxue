@@ -184,17 +184,21 @@ var _default = {
   data: function data() {
     return {
       nickname: '',
-      photo: '../../../static/image/user.png'
+      photo: ''
     };
   },
   computed: _objectSpread({}, (0, _vuex.mapState)({
     loginStatus: function loginStatus(state) {
       return state.user.loginStatus;
+    },
+    accountId: function accountId(state) {
+      return state.user.accountId;
     }
   })),
   onShow: function onShow() {
     var name = uni.getStorageSync('nickName');
     this.nickname = name;
+    this.photo = 'http://121.43.48.56/user/avatar?AccountId=' + this.accountId;
   },
   // lifetimes: {
   // 	ready() {

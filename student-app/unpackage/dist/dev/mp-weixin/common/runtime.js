@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/common/postList":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"components/common/rankitem":1};
+/******/ 		var cssChunks = {"components/common/postList":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"components/common/rankitem":1,"components/common/recorditem":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/common/postList":"components/common/postList","uni_modules/uni-icons/components/uni-icons/uni-icons":"uni_modules/uni-icons/components/uni-icons/uni-icons","components/common/rankitem":"components/common/rankitem"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/common/postList":"components/common/postList","uni_modules/uni-icons/components/uni-icons/uni-icons":"uni_modules/uni-icons/components/uni-icons/uni-icons","components/common/rankitem":"components/common/rankitem","components/common/recorditem":"components/common/recorditem"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

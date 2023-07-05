@@ -10,8 +10,8 @@
 				style="font-size: 50rpx; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">请修改个人信息</text>
 		</view>
 		<view class="temp1">
-			<view class="alterimg">
-				<img src="../../static/image/user.png" style="width: 100%;height:100%;">
+			<view class="alterimg" @click="toalterImage()">
+				<img :src='photo' style="width: 100%;height:100%;border-radius: 50%;">
 			</view>
 		</view>
 		<view class="temp3"></view>
@@ -52,7 +52,8 @@
 		data() {
 			return {
 				nickname: '',
-				email: ''
+				email: '',
+				photo: '../../static/image/person.png'
 			}
 		},
 		computed: {
@@ -71,7 +72,34 @@
 				});
 
 			},
-			ignore(){
+			toalterImage() {
+				uni.chooseImage({
+					count: 1, // 图片数量
+					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album', 'camera'], //从相册选择或者拍照
+					success: (res) => {
+						const tempFilePaths = res.tempFilePaths;
+						console.log(tempFilePaths[0]);
+						this.photo=tempFilePaths[0];
+						// uni.uploadFile({
+						// 	url: 'http://121.43.48.56/upload', //上传图片api
+						// 	filePath: tempFilePaths[0],
+						// 	name: 'photo',
+						// 	formData: {
+						// 		AccountId: this.accountId
+						// 	},
+						// 	success: (res) => {
+						// 		uni.showToast({
+						// 			title: "上传成功",
+						// 			icon: "success"
+						// 		})
+						// 		uni.navigateBack()
+						// 	}
+						// });
+					}
+				})
+			},
+			ignore() {
 				this.$request({
 					url: '/user/update/nickname',
 					method: 'GET',
@@ -85,7 +113,7 @@
 						uni.switchTab({
 							url: '/pages/tarbar/my/my'
 						})
-				
+
 				}).catch(err => {
 					console.log(err);
 				})
@@ -108,7 +136,15 @@
 
 					}).catch(err => {
 						console.log(err);
-					})
+					});
+					uni.uploadFile({
+						url: 'http://121.43.48.56/upload', //上传图片api
+						filePath: tempFilePaths[0],
+						name: 'photo',
+						formData: {
+							AccountId: this.accountId
+						}
+					});
 				} else {
 					this.$request({
 						url: '/user/update/nickname',

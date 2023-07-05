@@ -149,10 +149,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var _default = {
   data: function data() {
     return {
-      multiArray: [['0', '1', '2', '3', '4', '5'], ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60']],
+      multiArray: [['0', '1', '2', '3', '4', '5'], ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60']],
       multiIndex: [0, 0],
       array: [{
-        name: '请选择'
+        name: 'springboot'
       }, {
         name: 'web'
       }, {
@@ -169,7 +169,7 @@ var _default = {
       hour: 0,
       finalhour: 0,
       finalminute: 0,
-      data: '数据结构',
+      data: '请选择',
       dataStatus: false,
       timeStatus: false
     };
@@ -198,18 +198,9 @@ var _default = {
       this.$forceUpdate();
     },
     bindPickerChange: function bindPickerChange(e) {
-      if (e.detail.value == 0) {
-        this.dataStatus = false;
-        uni.showToast({
-          duration: 1500,
-          icon: 'error',
-          title: "请重新选择"
-        });
-      } else {
-        this.index = e.detail.value;
-        this.data = this.array[e.detail.value].name;
-        this.dataStatus = true;
-      }
+      this.index = e.detail.value;
+      this.data = this.array[e.detail.value].name;
+      this.dataStatus = true;
     },
     bindTimeChange: function bindTimeChange(e) {
       this.time = e.detail.value;
@@ -259,6 +250,7 @@ var _default = {
     startCountDown: function startCountDown() {
       var _this = this;
       // 启动计时器
+      this.minute--;
       this.timer = setInterval(function () {
         if (_this.minute >= 1) {
           _this.minute--;
@@ -266,12 +258,12 @@ var _default = {
           _this.hour--;
           _this.minute = 59;
         } else {
-          clearInterval(_this.timer);
           uni.showToast({
             title: '本次打卡成功'
           });
           console.log(_this.finalhour);
           console.log(_this.finalminute);
+          clearInterval(_this.timer);
           _this.toSubmit();
           // 到时候传到后端
         }
@@ -279,7 +271,7 @@ var _default = {
         // console.log(this.minute);
         // console.log(this.finalhour);
         // console.log(this.finalminute);
-      }, 1000);
+      }, 5000);
     },
     endCountDown: function endCountDown() {
       clearInterval(this.timer);

@@ -5,6 +5,13 @@
 	flex-wrap: wrap;
 	height: 100%;
 }
+.publishimage {
+	width: 80rpx;
+	height: 80rpx;
+	position: fixed;
+	bottom: 100rpx;
+	right: 30rpx;
+}
 .search-content {
 	height: 100rpx;
 	width: 100%;
@@ -55,7 +62,7 @@
 	padding: 10rpx 0;
 	color: #636263;
 }
-.home-data{
+.home-data {
 	width: 100%;
 }
 

@@ -175,8 +175,16 @@ exports.default = void 0;
 var _default = {
   data: function data() {
     return {
-      ischecked: false
+      AccountId: '',
+      Password: '',
+      Confirm: ''
     };
+  },
+  onLoad: function onLoad(options) {
+    // console.log(options.AccountId) // 输出 123
+    // console.log(options.Password) // 输出 uni-app
+    this.AccountId = options.AccountId;
+    console.log(this.AccountId);
   },
   methods: {
     navTo: function navTo(url) {
@@ -189,7 +197,29 @@ var _default = {
       });
     },
     toconfirm: function toconfirm() {
-      this.navTo('/pages/login/login');
+      if (this.Password === this.Confirm) {
+        this.$request({
+          url: '/user/forget',
+          method: 'GET',
+          data: {
+            AccountId: this.AccountId,
+            Password: this.Password
+          }
+        }).then(function (res) {
+          uni.navigateTo({
+            url: '/pages/login/login'
+          }), uni.showToast({
+            title: '修改成功'
+          });
+        }).catch(function (err) {
+          console.log(err);
+        });
+      } else {
+        uni.showToast({
+          title: '两次密码不同',
+          icon: 'error'
+        });
+      }
     }
   }
 };

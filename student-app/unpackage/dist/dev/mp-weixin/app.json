@@ -26,7 +26,9 @@
     "pages/tarbar/my/set/abouttongxue/abouttongxue",
     "pages/search/search",
     "pages/searchlist/searchlist",
-    "components/common/post"
+    "components/common/post",
+    "pages/postPublish/postPublish",
+    "pages/postitem/postitem"
   ],
   "subPackages": [],
   "window": {

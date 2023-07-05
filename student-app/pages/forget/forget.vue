@@ -3,21 +3,14 @@
 		<view class="temp1"></view>
 		<view class="inner-text">
 			<text
-				style="font-size: 50rpx; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">找回密码</text>
+				style="font-size: 50rpx; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">忘记密码</text>
 		</view>
 		<view class="temp2"></view>
 		<view class="inputtext">
-			<view class="inputtext1">
-				<view class="temp7"></view>
-				<view class="left-input1">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" />
-				</view>
-			</view>
-			<view class="smalltemp"></view>
 			<view class="inputtext2">
 				<view class="temp7"></view>
 				<view class="left-input2">
-					<input type="text" style="border: none;height: 100%;" placeholder="请输入手机号" />
+					<input type="text" style="border: none;height: 100%;" placeholder="请输入用户名" v-model="accountId" />
 				</view>
 				<view class="right-icon1">
 					<view class="registertext"><text style="color: gray;" @click="sendconfirm">发送验证码</text></view>
@@ -27,7 +20,7 @@
 			<view class="inputtext3">
 				<view class="temp7"></view>
 				<view class="left-input3">
-					<input type="text" style="border: none;height: 100%;" placeholder="填写验证码" />
+					<input type="text" style="border: none;height: 100%;" placeholder="填写验证码" v-model="code" />
 				</view>
 			</view>
 			<view class="smalltemp"></view>
@@ -37,19 +30,30 @@
 			<button style="border-radius: 45rpx;width: 75%;height: 80%;background-color:#25d3fa;color:darkblue;"
 				@click="toconfirm">提交</button>
 		</view>
-		
+
 
 
 	</view>
 </template>
 
 <script>
+	// import {
+	// 	mapMutations,
+	// 	mapState,
+	// } from 'vuex'
 	export default {
 		data() {
 			return {
-
+				accountId: '',
+				code: ''
 			}
 		},
+		// computed: {
+		// 	...mapState({
+		// 		loginStatus: state => state.user.loginStatus,
+		// 		accountId: state => state.user.accountId,
+		// 	})
+		// },
 		methods: {
 			navTo(url) {
 				console.log('跳转路径', url);
@@ -61,8 +65,48 @@
 				});
 
 			},
-			toconfirm(){
-				this.navTo('/pages/alter/alter')
+			sendconfirm() {
+				this.$request({
+					url: '/user/send',
+					methods: 'GET',
+					data: {
+						AccountId: this.accountId
+					}
+
+				}).then(res => {
+					console.log(res);
+					uni.showToast({
+						title:'验证码已发送'
+					})
+				}).then(err => {
+					console.log(err);
+				})
+			},
+			toconfirm() {
+				this.$request({
+					url: '/user/verify',
+					methods: 'GET',
+					data: {
+						AccountId: this.accountId,
+						Code:this.code
+					}
+				
+				}).then(res => {
+					console.log(res);
+					if(res){
+						uni.navigateTo({
+							url:'/pages/alter/alter?AccountId='+this.accountId
+						})
+					}
+					else {
+						uni.showToast({
+							title:'验证码错误',
+							icon:'error'
+						})
+					}
+				}).then(err => {
+					// console.log(err);
+				})
 			}
 		}
 	}
@@ -156,12 +200,14 @@
 		width: 65%;
 		height: 100%;
 	}
-.right-icon1 {
+
+	.right-icon1 {
 		display: flex;
 		height: 100%;
 		width: 20%;
 
 	}
+
 	.registertext {
 		display: flex;
 		align-items: center;

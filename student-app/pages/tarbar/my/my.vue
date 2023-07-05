@@ -5,8 +5,9 @@
 			<!-- 用户信息 -->
 			<view class="userImage">
 				<view class="inner_image">
-					<img @click="loginStatus?navTo('/pages/tarbar/my/set/set'):navTo('/pages/login/login')" :src=photo
-						style="height: 100%;width: 100%;"></img>
+					<img @click="loginStatus?navTo('/pages/tarbar/my/set/set'):navTo('/pages/login/login')"
+						:src="loginStatus ? photo : '../../../static/image/user.png'"
+						style="height: 100%;width: 100%;border-radius: 50%;"></img>
 				</view>
 			</view>
 			<view class="userName">
@@ -111,18 +112,21 @@
 		data() {
 			return {
 				nickname: '',
-				photo: '../../../static/image/user.png',
+				photo: '',
 			}
 		},
 		computed: {
 			...mapState({
-				loginStatus: state => state.user.loginStatus
+				loginStatus: state => state.user.loginStatus,
+				accountId: state => state.user.accountId
 			}),
 
 		},
-		onShow(){
-			let name=uni.getStorageSync('nickName');
-			this.nickname=name;
+		onShow() {
+			let name = uni.getStorageSync('nickName');
+			this.nickname = name;
+			this.photo = 'http://121.43.48.56/user/avatar?AccountId=' + this.accountId;
+
 		},
 		// lifetimes: {
 		// 	ready() {

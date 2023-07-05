@@ -51,7 +51,6 @@
 				AccountId: '',
 				Password: '',
 				Confirm: '',
-				isConfirmed: false,
 				isChecked: false
 			}
 		},

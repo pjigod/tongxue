@@ -1,0 +1,1 @@
+<view class="container"><view class="record"><view class="content">{{"学习内容："+content}}</view><view class="clockInDate">{{"打卡时间："+clockInDate}}</view><view class="clockInTime">{{"打卡时间："+clockInTime}}</view></view><view class="temp"></view></view>
