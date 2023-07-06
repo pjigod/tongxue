@@ -11,4 +11,5 @@ public class Rank {
     String AccountId;
     String NickName;
     int totaltime;
+    int count;
 }

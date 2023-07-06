@@ -39,4 +39,8 @@ public class UserServiceImpl implements UserService{
     public accounttb Userinfo(String id){
         return mapper.Userinfo(id);
     };
+    @Override
+    public boolean forgetpassword(String AccountId,String Password){
+        return mapper.forgetpassword(AccountId,Password);
+    }
 }

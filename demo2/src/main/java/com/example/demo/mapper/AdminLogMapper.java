@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.AdminLog;
+import com.example.demo.entity.Log;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,10 +10,6 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 @Mapper
 public interface AdminLogMapper {
-//    @Select("Select count(*) as count,Date(LogTime) from log group by Date(LogTime) order by Date(LogTime) desc")
-//    List<LogCount> getlogcount();
-//    @Select("Select count(*) as count,Date(ClockInDate)  from clockintb group by Date(ClockInDate) order by Date(ClockInDate) desc")
-//    List<ClockInCount>getclockincount();
     @Select("SELECT t.date, SUM(t.clockin_count) AS clockincount, SUM(t.log_count) AS logcount\n" +
             "FROM (\n" +
             "  SELECT DATE(ClockInDate) AS date, COUNT(*) AS clockin_count, 0 AS log_count\n" +
@@ -26,6 +23,8 @@ public interface AdminLogMapper {
             "GROUP BY t.date\n" +
             "ORDER BY t.date DESC;")
     List<AdminLog>getAdminlog();
+    @Select("Select * from log where AccountId=#{AccountId} order by LogId desc")
+    List<Log> getuserlog(@Param("AccountId")String AccountId);
     @Delete("DELETE FROM team_account where AccountId=#{AccountId};")
     boolean Deleteteam_accountByID(@Param("AccountId") String AccountId);
     @Delete("DELETE FROM concerntb WHERE Account1Id=#{AccountId} or Account2Id=#{AccountId};")

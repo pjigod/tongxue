@@ -97,7 +97,24 @@ public class UserController {
         return totaltime;
     }
     @RequestMapping("clockinlog")
-    public ClockIn getclockinlog(@RequestParam("AccountId")String AccountId){
+    public List<ClockIn> getclockinlog(@RequestParam("AccountId")String AccountId){
         return mapper.getclockinlog(AccountId);
+    }
+    @RequestMapping("forget")
+    public boolean forgetpassword(@RequestParam("Password") String Password,@RequestParam("AccountId")String AccountId){
+        System.out.println(Password);
+        System.out.println(AccountId);
+        return service.forgetpassword(AccountId,Password);
+    }
+    @RequestMapping("send")
+    public String forgetpassword(@RequestParam("AccountId")String AccountId){
+        String EMail=service.Userinfo(AccountId).getEmail();
+        mailService.send(EMail);
+        return "我们已经向您绑定的邮箱"+EMail+"发送了验证码";
+    }
+    @RequestMapping("verify")
+    public boolean verify(@RequestParam("AccountId")String AccountId,@RequestParam("Code")String Code){
+        String EMail=service.Userinfo(AccountId).getEmail();
+        return mailService.verify(EMail,Code);
     }
 }

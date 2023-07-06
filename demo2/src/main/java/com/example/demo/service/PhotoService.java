@@ -19,7 +19,6 @@ public class PhotoService {
     @Autowired
     UserMapper mapper;
 
-    @RequestMapping("user/avatar")
     public ResponseEntity<byte[]> getImg(String AccountId) throws IOException {//通过自己写的http工具类获取到图片输入流
         MultipartFile file = this.getMulipartFiles2(AccountId);
         byte[] bytesByStream = file.getBytes();

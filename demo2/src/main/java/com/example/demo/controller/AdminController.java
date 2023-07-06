@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,10 @@ public class AdminController {
     public Count getAllCount(){
         Count count=clockInMapper.getAllClockInCount();
         count.usercount=mapper.getUserCount();
-        count.clockintime/=60;
+        float totaltime = count.clockintime / 60f;
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        totaltime = Float.parseFloat(decimalFormat.format(totaltime));
+        count.clockintime = totaltime;
         return count;
     }
     @RequestMapping("/admin/all/insert")
@@ -86,5 +90,9 @@ public class AdminController {
     {
         if(mapper.insertuser(AccountId,Password,EMail,NickName))return mapper.Userinfo(AccountId);
         else return null;
+    }
+    @RequestMapping("/admin/query/log")
+    public List<Log> getuserlog(@RequestParam("AccountId")String AccountId){
+        return adminLogMapper.getuserlog(AccountId);
     }
 }

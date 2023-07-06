@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class Count {
     public int usercount;
     public int clockincount;
-    public int clockintime;
+    public float clockintime;
 
 }

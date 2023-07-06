@@ -6,14 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClockIn {
-    int ClockInId;
-    int ClockInTime;
+public class ConcernCard {
+    public String AccountId;
+    public String NickName;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime ClockInDate;
-    String Content;
-
+    public LocalDateTime concerntime;
 }

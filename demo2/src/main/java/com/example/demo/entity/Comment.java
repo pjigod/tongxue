@@ -4,27 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post {
+public class Comment {
+    int CMId;
     int PID;
     String AccountId;
-    String Title;
-    String Content;
-    String Brief;
-    String Type;
-    int CommentNum;
-    int CollectNum;
-    int GoodNum;
+    String CMContent;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime RelTime;
-    MultipartFile Cover;
-    String CoverURL;
-    String NickName;
-
+    LocalDateTime CMTime;
 }

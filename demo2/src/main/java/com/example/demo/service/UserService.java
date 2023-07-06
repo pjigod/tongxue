@@ -14,4 +14,5 @@ public interface UserService {
     public List<accounttb> findalluser();
      List<Rank> getrank();
     accounttb Userinfo(String id);
+    boolean forgetpassword(String AccountId,String Password);
 }

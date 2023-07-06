@@ -37,7 +37,7 @@ public interface UserMapper extends BaseMapper<accounttb> {
             "Delete from accounttb where AccountId=#{AccountId};\n" +
             "Delete from clockintb where AccountId=#{AccountId};")
     boolean DeleteByID(@Param("AccountId") String AccountId);
-    @Select("SELECT accounttb.AccountId,accounttb.NickName, SUM(clockintb.ClockInTime) AS totaltime " +
+    @Select("SELECT accounttb.AccountId,accounttb.NickName, SUM(clockintb.ClockInTime) AS totaltime,count(*) as count" +
             "FROM accounttb " +
             "INNER JOIN belongtb ON accounttb.AccountId = belongtb.AccountId " +
             "INNER JOIN clockintb ON belongtb.ClockInId = clockintb.ClockInId " +
@@ -47,13 +47,12 @@ public interface UserMapper extends BaseMapper<accounttb> {
     List<Rank> getrank();
     @Select("select COALESCE(SUM(clockintb.ClockInTime),0) AS totaltime from  belongtb  inner join clockintb on belongtb.ClockInId = clockintb.ClockInId and belongtb.AccountId=#{AccountId}")
     int gettotaltime(@Param("AccountId") String AccountId);
-    @Select("Select * from belongtb inner joln clockintb on belongtb.Clockintb.ClockInId and belongtb.AccountId=#{AccountId}")
-    ClockIn getclockinlog(@Param("AccountId")String AccountId);
+    @Select("Select * from belongtb inner join clockintb on belongtb.ClockInId=clockintb.ClockInId and belongtb.AccountId=#{AccountId} order by ClockInDate desc")
+    List<ClockIn> getclockinlog(@Param("AccountId")String AccountId);
     @Select("select count(*) from accounttb")
     int getUserCount();
     @Insert("Insert into accounttb values(#{AccountId},#{NickName},#{EMail},#{Password},null)")
     boolean insertuser(@Param("AccountId") String AccountId, @Param("Password") String Password, @Param("EMail")String EMail, @Param("NickName")String NickName);
-
-
-
+    @Update("Update accounttb set Password=#{Password} where AccountId=#{AccountId}")
+    boolean forgetpassword(@Param("AccountId")String AccountId,@Param("Password")String Password);
 }
